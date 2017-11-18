@@ -72,12 +72,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -93,6 +97,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,12 +148,107 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AStar.h" />
+    <ClInclude Include="AttackFly.h" />
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="BigSteven.h" />
+    <ClInclude Include="BigStevenBody.h" />
+    <ClInclude Include="BigStevenHead.h" />
+    <ClInclude Include="BlackFly.h" />
+    <ClInclude Include="Bomb.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossHp.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="define.h" />
+    <ClInclude Include="Device.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="enum.h" />
+    <ClInclude Include="FaceCostume.h" />
+    <ClInclude Include="function.h" />
+    <ClInclude Include="Gaper.h" />
+    <ClInclude Include="HatCostume.h" />
+    <ClInclude Include="Horf.h" />
+    <ClInclude Include="HpUI.h" />
+    <ClInclude Include="Include.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="KeyMgr_Song.h" />
+    <ClInclude Include="Logo.h" />
+    <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Missile.h" />
+    <ClInclude Include="Monster.h" />
+    <ClInclude Include="MultiTexture.h" />
+    <ClInclude Include="Obj.h" />
+    <ClInclude Include="ObjFactory.h" />
+    <ClInclude Include="ObjMgr.h" />
+    <ClInclude Include="PassiveItem.h" />
+    <ClInclude Include="Pickup.h" />
+    <ClInclude Include="PickupUI.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Player_Body.h" />
+    <ClInclude Include="Player_Head.h" />
+    <ClInclude Include="RedHost.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneMgr.h" />
+    <ClInclude Include="SingleTexture.h" />
+    <ClInclude Include="SmallSteven.h" />
+    <ClInclude Include="SoundMgr.h" />
+    <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="struct.h" />
     <ClInclude Include="TankFighters.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Tear.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureMgr.h" />
+    <ClInclude Include="TileMgr.h" />
+    <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="UI.h" />
+    <ClInclude Include="value.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AStar.cpp" />
+    <ClCompile Include="AttackFly.cpp" />
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="BigSteven.cpp" />
+    <ClCompile Include="BigStevenBody.cpp" />
+    <ClCompile Include="BigStevenHead.cpp" />
+    <ClCompile Include="BlackFly.cpp" />
+    <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossHp.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Device.cpp" />
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="FaceCostume.cpp" />
+    <ClCompile Include="Gaper.cpp" />
+    <ClCompile Include="HatCostume.cpp" />
+    <ClCompile Include="Horf.cpp" />
+    <ClCompile Include="HpUI.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="KeyMgr_Song.cpp" />
+    <ClCompile Include="Logo.cpp" />
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MultiTexture.cpp" />
+    <ClCompile Include="Obj.cpp" />
+    <ClCompile Include="ObjMgr.cpp" />
+    <ClCompile Include="PassiveItem.cpp" />
+    <ClCompile Include="Pickup.cpp" />
+    <ClCompile Include="PickupUI.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player_Body.cpp" />
+    <ClCompile Include="Player_Head.cpp" />
+    <ClCompile Include="RedHost.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneMgr.cpp" />
+    <ClCompile Include="SingleTexture.cpp" />
+    <ClCompile Include="SmallSteven.cpp" />
+    <ClCompile Include="SoundMgr.cpp" />
+    <ClCompile Include="Stage.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -156,6 +256,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TankFighters.cpp" />
+    <ClCompile Include="Tear.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureMgr.cpp" />
+    <ClCompile Include="TileMgr.cpp" />
+    <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TankFighters.rc" />
