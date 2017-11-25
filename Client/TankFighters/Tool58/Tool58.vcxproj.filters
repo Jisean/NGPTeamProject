@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="1. MainFrame">
+      <UniqueIdentifier>{1e2af05a-8c60-48be-9849-79fc405c214b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. View">
+      <UniqueIdentifier>{3e4044bd-83c9-45a8-9e17-379303201b2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. View\2-1. FormView">
+      <UniqueIdentifier>{6b720d6e-5be8-4ba8-9ce2-c58ed5fbfda7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. View\2-2. MiniView">
+      <UniqueIdentifier>{4f2d1b85-cf90-402e-ac1a-b9ae809aa0cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Default">
+      <UniqueIdentifier>{84db876f-81ea-4070-a229-f52f93a4d9ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Default\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="99. Default\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="99. Default\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="3. Mgr">
+      <UniqueIdentifier>{0363130d-66c0-453e-bc71-89566b340a35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Mgr\3-1. Device">
+      <UniqueIdentifier>{82a4287d-5624-4149-883a-82c173af272e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Mgr\3-2. TextureMgr">
+      <UniqueIdentifier>{59312a82-867f-4afe-9def-5ded4338fb4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc">
+      <UniqueIdentifier>{30dfb501-ba52-472c-ac17-e131bb904c5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-1. Texture">
+      <UniqueIdentifier>{cefe97cf-532a-4e3b-b518-93fa44646bac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-1. Texture\a. SingleTexture">
+      <UniqueIdentifier>{6f90ae36-8a8a-4aea-81c1-c687b862a7de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-1. Texture\b. MultiTexture">
+      <UniqueIdentifier>{65a98f3a-8ea7-4e1d-940e-869efcf36255}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-2. FileInfo">
+      <UniqueIdentifier>{82df7dfc-3eeb-4f23-9209-bc57612ebf66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-3. MySheet">
+      <UniqueIdentifier>{f2fb7a2c-4fc1-487c-9e69-4df73cad4dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-3. MySheet\b. Page2">
+      <UniqueIdentifier>{cf47cc2d-99f3-4401-bec7-7ae21a288dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-3. MySheet\a. Page1">
+      <UniqueIdentifier>{fe67ecb7-b2a2-4370-9cba-4f69ee697977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Obj">
+      <UniqueIdentifier>{c97569ce-d3a6-4760-b904-176d0a6ef903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Obj\4-1. Back">
+      <UniqueIdentifier>{a072b504-ad42-48c8-b80a-744c9ead49b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Design">
+      <UniqueIdentifier>{d907a5f1-bb09-4fff-af9d-f70b51e904f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Design\6-1. Factory">
+      <UniqueIdentifier>{805a828d-a833-4226-a35d-2c4bdb985e3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="7. Dialog">
+      <UniqueIdentifier>{c65c49b6-0714-49cc-8989-8248f1866e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="7. Dialog\7-1. UnitTool">
+      <UniqueIdentifier>{1ce607ac-8bcd-4051-a6c2-139b7163a02c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="7. Dialog\7-2. MapTool">
+      <UniqueIdentifier>{7ec8b713-9ad1-496b-8a48-2bedb56b2eff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="7. Dialog\7-3. PathFind">
+      <UniqueIdentifier>{0abc3e38-3526-4f6b-a538-ddc3cb277b69}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>1. MainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool58View.cpp">
+      <Filter>2. View</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm.cpp">
+      <Filter>2. View\2-1. FormView</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniView.cpp">
+      <Filter>2. View\2-2. MiniView</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>99. Default\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool58.cpp">
+      <Filter>99. Default\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool58Doc.cpp">
+      <Filter>99. Default\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>3. Mgr\3-1. Device</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMgr.cpp">
+      <Filter>3. Mgr\3-2. TextureMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>5. Etc\5-1. Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleTexture.cpp">
+      <Filter>5. Etc\5-1. Texture\a. SingleTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTexture.cpp">
+      <Filter>5. Etc\5-1. Texture\b. MultiTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="FileInfo.cpp">
+      <Filter>5. Etc\5-2. FileInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="MySheet.cpp">
+      <Filter>5. Etc\5-3. MySheet</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPage2.cpp">
+      <Filter>5. Etc\5-3. MySheet\b. Page2</Filter>
+    </ClCompile>
+    <ClCompile Include="MyPage1.cpp">
+      <Filter>5. Etc\5-3. MySheet\a. Page1</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>4. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Back.cpp">
+      <Filter>4. Obj\4-1. Back</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTool.cpp">
+      <Filter>7. Dialog\7-1. UnitTool</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTool.cpp">
+      <Filter>7. Dialog\7-2. MapTool</Filter>
+    </ClCompile>
+    <ClCompile Include="PathFind.cpp">
+      <Filter>7. Dialog\7-3. PathFind</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainFrm.h">
+      <Filter>1. MainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool58View.h">
+      <Filter>2. View</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm.h">
+      <Filter>2. View\2-1. FormView</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniView.h">
+      <Filter>2. View\2-2. MiniView</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>99. Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>99. Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>99. Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool58.h">
+      <Filter>99. Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool58Doc.h">
+      <Filter>99. Default\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>3. Mgr\3-1. Device</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMgr.h">
+      <Filter>3. Mgr\3-2. TextureMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>5. Etc\5-1. Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleTexture.h">
+      <Filter>5. Etc\5-1. Texture\a. SingleTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTexture.h">
+      <Filter>5. Etc\5-1. Texture\b. MultiTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="FileInfo.h">
+      <Filter>5. Etc\5-2. FileInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="MySheet.h">
+      <Filter>5. Etc\5-3. MySheet</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPage2.h">
+      <Filter>5. Etc\5-3. MySheet\b. Page2</Filter>
+    </ClInclude>
+    <ClInclude Include="MyPage1.h">
+      <Filter>5. Etc\5-3. MySheet\a. Page1</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>4. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Back.h">
+      <Filter>4. Obj\4-1. Back</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjFactory.h">
+      <Filter>6. Design\6-1. Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitTool.h">
+      <Filter>7. Dialog\7-1. UnitTool</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTool.h">
+      <Filter>7. Dialog\7-2. MapTool</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFind.h">
+      <Filter>7. Dialog\7-3. PathFind</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>99. Default</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Tool58.ico">
+      <Filter>99. Default\리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Tool58Doc.ico">
+      <Filter>99. Default\리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>99. Default\리소스 파일</Filter>
+    </Image>
+    <Image Include="res\Toolbar256.bmp">
+      <Filter>99. Default\리소스 파일</Filter>
+    </Image>
+    <Image Include="UserImages.bmp">
+      <Filter>99. Default\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Tool58.rc">
+      <Filter>99. Default\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Tool58.rc2">
+      <Filter>99. Default\리소스 파일</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+</Project>

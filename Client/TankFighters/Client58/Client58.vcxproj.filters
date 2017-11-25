@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="1. MainGame">
+      <UniqueIdentifier>{be5efeeb-28c2-4b70-b8c0-76bc92806b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj">
+      <UniqueIdentifier>{cdd64b77-8453-4f43-8990-b96bf2c5e222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-01. BackGround">
+      <UniqueIdentifier>{fa4560a5-b68b-44a7-bc8f-89fc722782a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-02. Player">
+      <UniqueIdentifier>{cb509bbd-8813-4eca-a384-60a762e7e4d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-02. Player\a.Body">
+      <UniqueIdentifier>{d466f31d-44bd-4158-9613-9fafee897ad5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-02. Player\b.Head">
+      <UniqueIdentifier>{e305576f-aa9a-44ec-9268-12f9458af139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-04.Bullet">
+      <UniqueIdentifier>{0e383660-5e1f-46d9-9a08-de1361a28cf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-03.Tear">
+      <UniqueIdentifier>{d3e6b88a-3508-4654-a562-4b379495d802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-07.UI">
+      <UniqueIdentifier>{598a8dbd-8b38-45b1-a507-ede9232ba81f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-07.UI\a.HP">
+      <UniqueIdentifier>{8663bbbb-dbb0-4394-952d-9da60995dad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-09.Effect">
+      <UniqueIdentifier>{caf19872-52bc-4072-8f24-5dad206bca62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr">
+      <UniqueIdentifier>{208ffee9-63e9-480e-bf5f-f01ee575959e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-1. Device">
+      <UniqueIdentifier>{3a70f5cd-5354-4614-8735-49415c0c37e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-2. TextureMgr">
+      <UniqueIdentifier>{57118096-00d5-41e7-852d-6b0fec07ad2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-3. SceneMgr">
+      <UniqueIdentifier>{ee11826f-bac0-416b-8bb7-d552e7ed47fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-4. ObjMgr">
+      <UniqueIdentifier>{3ff8a766-fe90-4485-b668-3aa03ff1a2e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-5. TimeMgr">
+      <UniqueIdentifier>{4a8fcf4d-386c-4680-9ad8-1677715c2b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-7. KeyMgr">
+      <UniqueIdentifier>{c01f7f2e-86be-4cd7-8f07-e5e2902898bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-7. KeyMgr\a.Key_You">
+      <UniqueIdentifier>{6667143d-0a42-4d33-9733-f124dc06f16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-7. KeyMgr\b.Key_Song">
+      <UniqueIdentifier>{c310fa7d-8760-433f-b724-52141860e2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-8. TileMgr">
+      <UniqueIdentifier>{78d4e2a5-48c9-43b5-a1e9-d058a3a91de4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. Mgr\6-9. SoundMgr">
+      <UniqueIdentifier>{86eb5f53-15a0-4ba5-838d-aaa3404f6eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Design">
+      <UniqueIdentifier>{1de20ddf-259d-45e1-9ef6-ebf2b360caf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Design\4-1. Factory">
+      <UniqueIdentifier>{0d2f5bfe-1143-492e-a3cc-a384c5d2ca95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4. Design\4-1. Factory\a. ObjFactory">
+      <UniqueIdentifier>{e4f8179f-7d9c-44b4-93e8-5546d28702bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc">
+      <UniqueIdentifier>{d5d271aa-763e-484d-a257-e61e157881c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-1. Texture">
+      <UniqueIdentifier>{acb4d41c-8545-408b-bc2f-cafb1535f888}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-1. Texture\a. SingleTexture">
+      <UniqueIdentifier>{68cef1cf-f33b-4685-9b56-9592b8c9ed5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5. Etc\5-1. Texture\b. MultiTexture">
+      <UniqueIdentifier>{54c3dfdb-beca-4c9b-9968-cb2262a7b8d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. Scene">
+      <UniqueIdentifier>{eb3501fa-5be1-4ddb-9975-6daed46b3cdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. Scene\2-1. Logo">
+      <UniqueIdentifier>{9ac961ce-8446-4621-909e-82664af3c936}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. Scene\2-2. Stage">
+      <UniqueIdentifier>{94c78b4b-7d5a-40e1-94aa-eb42f6218f35}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Client58.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>1. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>3. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>3. Obj\3-01. BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>3. Obj\3-02. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Body.cpp">
+      <Filter>3. Obj\3-02. Player\a.Body</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Head.cpp">
+      <Filter>3. Obj\3-02. Player\b.Head</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>3. Obj\3-04.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Tear.cpp">
+      <Filter>3. Obj\3-03.Tear</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>3. Obj\3-07.UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HpUI.cpp">
+      <Filter>3. Obj\3-07.UI\a.HP</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>3. Obj\3-09.Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>6. Mgr\6-1. Device</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMgr.cpp">
+      <Filter>6. Mgr\6-2. TextureMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>6. Mgr\6-3. SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>6. Mgr\6-4. ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeMgr.cpp">
+      <Filter>6. Mgr\6-5. TimeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>6. Mgr\6-7. KeyMgr\a.Key_You</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr_Song.cpp">
+      <Filter>6. Mgr\6-7. KeyMgr\b.Key_Song</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMgr.cpp">
+      <Filter>6. Mgr\6-8. TileMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>6. Mgr\6-9. SoundMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>5. Etc\5-1. Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleTexture.cpp">
+      <Filter>5. Etc\5-1. Texture\a. SingleTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiTexture.cpp">
+      <Filter>5. Etc\5-1. Texture\b. MultiTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>2. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>2. Scene\2-1. Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>2. Scene\2-2. Stage</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Client58.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>1. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>3. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>3. Obj\3-01. BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>3. Obj\3-02. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Body.h">
+      <Filter>3. Obj\3-02. Player\a.Body</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Head.h">
+      <Filter>3. Obj\3-02. Player\b.Head</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>3. Obj\3-04.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Tear.h">
+      <Filter>3. Obj\3-03.Tear</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>3. Obj\3-07.UI</Filter>
+    </ClInclude>
+    <ClInclude Include="HpUI.h">
+      <Filter>3. Obj\3-07.UI\a.HP</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>3. Obj\3-09.Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>6. Mgr\6-1. Device</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMgr.h">
+      <Filter>6. Mgr\6-2. TextureMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>6. Mgr\6-3. SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>6. Mgr\6-4. ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeMgr.h">
+      <Filter>6. Mgr\6-5. TimeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>6. Mgr\6-7. KeyMgr\a.Key_You</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr_Song.h">
+      <Filter>6. Mgr\6-7. KeyMgr\b.Key_Song</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMgr.h">
+      <Filter>6. Mgr\6-8. TileMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>6. Mgr\6-9. SoundMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjFactory.h">
+      <Filter>4. Design\4-1. Factory\a. ObjFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>5. Etc\5-1. Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleTexture.h">
+      <Filter>5. Etc\5-1. Texture\a. SingleTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiTexture.h">
+      <Filter>5. Etc\5-1. Texture\b. MultiTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>2. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>2. Scene\2-1. Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>2. Scene\2-2. Stage</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Client58.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client58.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
