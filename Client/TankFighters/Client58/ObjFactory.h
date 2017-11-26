@@ -74,18 +74,7 @@ public:
 	}
 	///////////픽업ui 생성용/////////
 
-	/////////////////////////////////
 
-	static CObj*	CreateObj(D3DXVECTOR3 vPos, BOSSHP _type)
-	{
-		CObj*	pObj = new T;
-		pObj->Initialize();
-		pObj->SetPos(vPos, _type);
-
-		return pObj;
-	}
-
-	/////////보스hp바 생성용/////////
 
 	/////////////////////////////////
 
@@ -99,32 +88,8 @@ public:
 	}
 	////////픽업아이템 생성용////////
 
-	/////////////////////////////////
-	static CObj*	CreateObj(D3DXVECTOR3 vPos, PASSIVEITEM _type)
-	{
-		CObj*	pObj = new T;
-		pObj->Initialize();
-		pObj->SetPos(vPos, _type);
-
-		return pObj;
-	}
-	////////자동아이템 생성용///////
-
-	////////////////////////////////
 
 
-	///////수동아이템 생성용////////
-
-	////////////////////////////////
-
-	static CObj*	CreateObj2(float _fX, float _fY, PASSIVEITEM _type)
-	{
-		CObj*	pObj = new T;
-		pObj->Initialize();
-		pObj->SetPos2(_fX, _fY, _type);
-
-		return pObj;
-	}
 	///////코스튬 생성용////////////
 
 	////////////////////////////////

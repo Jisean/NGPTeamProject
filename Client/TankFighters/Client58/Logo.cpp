@@ -6,7 +6,9 @@
 
 
 CLogo::CLogo(void)
-:m_hThread(NULL)
+:m_hThread(NULL),
+m_bLoading(false),
+m_bLoadingThreadClose(false)
 {
 	ZeroMemory(&m_Crt, sizeof(CRITICAL_SECTION));
 }
@@ -36,13 +38,23 @@ HRESULT CLogo::Initialize(void)
 int CLogo::Progress(void)
 {
 	rcLDBar.right = LONG(g_fLoadingCnt * 4.35);
-	if(CKeyMgr::GetInst()->KeyDown(KEY_ENTER))
+
+	if (m_bLoading == true && m_bLoadingThreadClose == false)
 	{
 		WaitForSingleObject(m_hThread, INFINITE);
 		CloseHandle(m_hThread);
 
 		DeleteCriticalSection(&m_Crt);
 
+		m_bLoadingThreadClose = true;
+	}
+	if (m_bLoadingThreadClose == true && g_bConnected == false)
+	{
+		g_Socket.InitSocket(0);
+	}
+
+	if(CKeyMgr::GetInst()->KeyDown(KEY_ENTER))
+	{
 		CSceneMgr::GetInst()->SetScene(SC_STAGE);
 		return 0;
 	}
@@ -129,13 +141,21 @@ unsigned int __stdcall CLogo::LoadThread(void* pArg)
 
 	CTextureMgr::GetInst()->SetPathName(L"로딩 완료");
 
+	pLogo->SetLoading(true);
 
 	LeaveCriticalSection(&pLogo->GetCrt());
 	_endthreadex(0);
+
+
 	return 0;
 }
 
 CRITICAL_SECTION CLogo::GetCrt(void)
 {
 	return m_Crt;
+}
+
+void CLogo::SetLoading(bool bTF)
+{
+	m_bLoading = bTF;
 }

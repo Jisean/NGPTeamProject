@@ -64,17 +64,7 @@ void CObj::SetPos(D3DXVECTOR3 vPos, PICKUP _type)
 	m_dwState = _type;
 }
 
-void CObj::SetPos(D3DXVECTOR3 vPos, PASSIVEITEM _type)
-{
-	m_tInfo.vPos = vPos;
-	m_dwState = _type;
-}
-void CObj::SetPos2(float _fX, float _fY, PASSIVEITEM _type)
-{
-	m_tInfo.vPos.x = _fX;
-	m_tInfo.vPos.y = _fY;
-	m_dwState2 = _type;
-}
+
 void CObj::SetPos(float _fX, float _fY, D3DXVECTOR3 _vDir, float Angle)
 {
 	m_tInfo.vPos.x = _fX;
@@ -87,11 +77,7 @@ void CObj::SetPos(D3DXVECTOR3 vPos, EFFECT _type)
 	m_tInfo.vPos = vPos;
 	m_dwState = _type;
 }
-void CObj::SetPos(D3DXVECTOR3 vPos, BOSSHP _type)
-{
-	m_tInfo.vPos = vPos;
-	m_dwState = _type;
-}
+
 
 
 INFO* CObj::GetInfo(void)

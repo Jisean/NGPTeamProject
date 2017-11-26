@@ -8,10 +8,13 @@
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
-HINSTANCE hInst;								// 현재 인스턴스입니다.
+HINSTANCE g_hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 HWND	g_hWnd;
+CServer g_Socket;
+bool	g_bConnected = false;
+
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -117,7 +120,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd;
    RECT	rc = {0, 0, WINCX, WINCY };
 
-   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+   g_hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
@@ -186,4 +189,28 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}
 	return 0;
+}
+
+
+BOOL CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
+{
+	switch (iMessage)
+	{
+	case WM_INITDIALOG:
+		return TRUE;
+	case WM_COMMAND:
+		switch (wParam)
+		{
+		case IDOK:
+			SendMessage(GetDlgItem(hDlg, IDC_IPADDRESS1), IPM_GETADDRESS, 0, (LPARAM)&g_Socket.SERVERIP);
+			EndDialog(hDlg, 0);
+			return TRUE;
+		}
+		break;
+	case WM_CLOSE:
+		g_Socket.CloseSocket();
+		exit(1);
+		break;
+	}
+	return FALSE;
 }

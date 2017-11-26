@@ -113,6 +113,7 @@
     <ClCompile Include="Player_Head.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="SingleTexture.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="Stage.cpp" />
@@ -145,9 +146,11 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player_Body.h" />
     <ClInclude Include="Player_Head.h" />
+    <ClInclude Include="Protocol.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneMgr.h" />
+    <ClInclude Include="Server.h" />
     <ClInclude Include="SingleTexture.h" />
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="Stage.h" />

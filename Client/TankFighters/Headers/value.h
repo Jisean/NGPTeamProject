@@ -1,7 +1,9 @@
 #pragma once
 
+extern HINSTANCE	g_hInst;
 extern	HWND g_hWnd;
 extern float	g_fLoadingCnt;
+extern bool		g_bConnected;
 
 const int WINCX = 1024;
 const int WINCY = 768;

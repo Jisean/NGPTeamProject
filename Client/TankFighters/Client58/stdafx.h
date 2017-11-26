@@ -45,8 +45,19 @@
 
 #include <crtdbg.h>
 
+#include<WinSock2.h>
+#include <CommCtrl.h>
 #include <iostream>
 
 using namespace std;
 
 #pragma comment (lib, "fmodex_vc.lib")
+
+#include "Server.h"
+extern CServer g_Socket;
+
+#include "resource.h"
+BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
+
+#pragma comment(lib,"msimg32.lib")
+#pragma comment(lib, "ws2_32.lib")

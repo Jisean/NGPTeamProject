@@ -11,15 +11,6 @@ CStage::CStage(void)
 	m_bIntrostart = false;
 	m_bIntroend = false;
 	m_bBgmRoof = false;
-	m_bShopintrostart = false;
-	m_bShopintroend = false;
-	m_bBossjingle = false;
-	m_bBossRoofstart = false;
-	m_bBosscalmintrostart = false;
-	m_bBosscalmintroend = false;
-	m_bBossjingle = false;
-	m_bShopRoof = false;
-	m_bBosscalmroof = false;
 
 	dwBgmTime = GetTickCount();
 }
@@ -52,16 +43,6 @@ int CStage::Progress(void)
 
 	if(*(CObjMgr::GetInst()->GetObjList()[OBJ_PLAYER].front()->GetRoomType()) !=12 && *(CObjMgr::GetInst()->GetObjList()[OBJ_PLAYER].front()->GetRoomType()) !=5)
 	{
-		m_bShopintrostart = false;
-		m_bShopintroend = false;
-		m_bShopRoof = false;
-
-		m_bBossRoof = false;
-		
-		m_bBosscalmintrostart = false;
-		m_bBosscalmintroend = false;
-		m_bBosscalmroof = false;
-
 
 		if(m_bIntrostart == false)
 		{

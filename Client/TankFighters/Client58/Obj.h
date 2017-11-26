@@ -58,11 +58,8 @@ public:
 	void		SetPos(D3DXVECTOR3 vPos, HUDTYPE _type);
 	void		SetPos(D3DXVECTOR3 vPos, HUDNUMTYPE _type);
 	void		SetPos(D3DXVECTOR3 vPos, PICKUP _type);
-	void		SetPos(D3DXVECTOR3 vPos, PASSIVEITEM _type);
-	void		SetPos2(float _fX, float _fY, PASSIVEITEM _type);
 	void		SetPos(float _fX, float _fY, D3DXVECTOR3 _vDir, float Angle);
 	void		SetPos(D3DXVECTOR3 vPos, EFFECT _type);
-	void		SetPos(D3DXVECTOR3 vPos, BOSSHP _type);
 	INFO*		GetInfo(void);
 	const	wstring&	GetObjKey(void);
 	void		SetDead(void);

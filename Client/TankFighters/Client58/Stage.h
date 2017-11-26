@@ -9,18 +9,6 @@ private:
 	bool m_bIntroend;
 	bool m_bBgmRoof;
 
-	bool m_bShopintrostart;
-	bool m_bShopintroend;
-	bool m_bShopRoof;
-
-	bool m_bBossRoofstart;
-	bool m_bBossRoof;
-	bool m_bBossjingle;
-
-	bool m_bBosscalmintrostart;
-	bool m_bBosscalmintroend;
-	bool m_bBosscalmroof;
-
 	DWORD dwBgmTime;
 
 public:

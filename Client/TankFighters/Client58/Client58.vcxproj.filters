@@ -109,6 +109,12 @@
     <Filter Include="2. Scene\2-2. Stage">
       <UniqueIdentifier>{94c78b4b-7d5a-40e1-94aa-eb42f6218f35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="7.Server">
+      <UniqueIdentifier>{3c69c54c-d1fd-4d9b-a62d-5f04cf409551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="7.Server\a.Server">
+      <UniqueIdentifier>{a1a39aff-0845-4f2a-91fb-d66bb76e5379}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client58.cpp">
@@ -194,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>2. Scene\2-2. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>7.Server\a.Server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +298,12 @@
     </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>2. Scene\2-2. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol.h">
+      <Filter>7.Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>7.Server\a.Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
