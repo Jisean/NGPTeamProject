@@ -46,39 +46,6 @@
     <Filter Include="3. Obj\3-09.Effect">
       <UniqueIdentifier>{caf19872-52bc-4072-8f24-5dad206bca62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="6. Mgr">
-      <UniqueIdentifier>{208ffee9-63e9-480e-bf5f-f01ee575959e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-1. Device">
-      <UniqueIdentifier>{3a70f5cd-5354-4614-8735-49415c0c37e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-2. TextureMgr">
-      <UniqueIdentifier>{57118096-00d5-41e7-852d-6b0fec07ad2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-3. SceneMgr">
-      <UniqueIdentifier>{ee11826f-bac0-416b-8bb7-d552e7ed47fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-4. ObjMgr">
-      <UniqueIdentifier>{3ff8a766-fe90-4485-b668-3aa03ff1a2e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-5. TimeMgr">
-      <UniqueIdentifier>{4a8fcf4d-386c-4680-9ad8-1677715c2b54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-7. KeyMgr">
-      <UniqueIdentifier>{c01f7f2e-86be-4cd7-8f07-e5e2902898bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-7. KeyMgr\a.Key_You">
-      <UniqueIdentifier>{6667143d-0a42-4d33-9733-f124dc06f16d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-7. KeyMgr\b.Key_Song">
-      <UniqueIdentifier>{c310fa7d-8760-433f-b724-52141860e2a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-8. TileMgr">
-      <UniqueIdentifier>{78d4e2a5-48c9-43b5-a1e9-d058a3a91de4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="6. Mgr\6-9. SoundMgr">
-      <UniqueIdentifier>{86eb5f53-15a0-4ba5-838d-aaa3404f6eea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="4. Design">
       <UniqueIdentifier>{1de20ddf-259d-45e1-9ef6-ebf2b360caf1}</UniqueIdentifier>
     </Filter>
@@ -114,6 +81,39 @@
     </Filter>
     <Filter Include="7.Server\a.Server">
       <UniqueIdentifier>{a1a39aff-0845-4f2a-91fb-d66bb76e5379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr">
+      <UniqueIdentifier>{208ffee9-63e9-480e-bf5f-f01ee575959e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-1. Device">
+      <UniqueIdentifier>{3a70f5cd-5354-4614-8735-49415c0c37e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-2. TextureMgr">
+      <UniqueIdentifier>{57118096-00d5-41e7-852d-6b0fec07ad2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-3. SceneMgr">
+      <UniqueIdentifier>{ee11826f-bac0-416b-8bb7-d552e7ed47fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-4. ObjMgr">
+      <UniqueIdentifier>{3ff8a766-fe90-4485-b668-3aa03ff1a2e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-5. TimeMgr">
+      <UniqueIdentifier>{4a8fcf4d-386c-4680-9ad8-1677715c2b54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-7. KeyMgr">
+      <UniqueIdentifier>{c01f7f2e-86be-4cd7-8f07-e5e2902898bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-7. KeyMgr\a.Key_You">
+      <UniqueIdentifier>{6667143d-0a42-4d33-9733-f124dc06f16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-7. KeyMgr\b.Key_Song">
+      <UniqueIdentifier>{c310fa7d-8760-433f-b724-52141860e2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-8. TileMgr">
+      <UniqueIdentifier>{78d4e2a5-48c9-43b5-a1e9-d058a3a91de4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6. ClientMgr\6-9. SoundMgr">
+      <UniqueIdentifier>{86eb5f53-15a0-4ba5-838d-aaa3404f6eea}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -157,31 +157,31 @@
       <Filter>3. Obj\3-09.Effect</Filter>
     </ClCompile>
     <ClCompile Include="Device.cpp">
-      <Filter>6. Mgr\6-1. Device</Filter>
+      <Filter>6. ClientMgr\6-1. Device</Filter>
     </ClCompile>
     <ClCompile Include="TextureMgr.cpp">
-      <Filter>6. Mgr\6-2. TextureMgr</Filter>
+      <Filter>6. ClientMgr\6-2. TextureMgr</Filter>
     </ClCompile>
     <ClCompile Include="SceneMgr.cpp">
-      <Filter>6. Mgr\6-3. SceneMgr</Filter>
+      <Filter>6. ClientMgr\6-3. SceneMgr</Filter>
     </ClCompile>
     <ClCompile Include="ObjMgr.cpp">
-      <Filter>6. Mgr\6-4. ObjMgr</Filter>
+      <Filter>6. ClientMgr\6-4. ObjMgr</Filter>
     </ClCompile>
     <ClCompile Include="TimeMgr.cpp">
-      <Filter>6. Mgr\6-5. TimeMgr</Filter>
+      <Filter>6. ClientMgr\6-5. TimeMgr</Filter>
     </ClCompile>
     <ClCompile Include="KeyMgr.cpp">
-      <Filter>6. Mgr\6-7. KeyMgr\a.Key_You</Filter>
+      <Filter>6. ClientMgr\6-7. KeyMgr\a.Key_You</Filter>
     </ClCompile>
     <ClCompile Include="KeyMgr_Song.cpp">
-      <Filter>6. Mgr\6-7. KeyMgr\b.Key_Song</Filter>
+      <Filter>6. ClientMgr\6-7. KeyMgr\b.Key_Song</Filter>
     </ClCompile>
     <ClCompile Include="TileMgr.cpp">
-      <Filter>6. Mgr\6-8. TileMgr</Filter>
+      <Filter>6. ClientMgr\6-8. TileMgr</Filter>
     </ClCompile>
     <ClCompile Include="SoundMgr.cpp">
-      <Filter>6. Mgr\6-9. SoundMgr</Filter>
+      <Filter>6. ClientMgr\6-9. SoundMgr</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>5. Etc\5-1. Texture</Filter>
@@ -252,31 +252,31 @@
       <Filter>3. Obj\3-09.Effect</Filter>
     </ClInclude>
     <ClInclude Include="Device.h">
-      <Filter>6. Mgr\6-1. Device</Filter>
+      <Filter>6. ClientMgr\6-1. Device</Filter>
     </ClInclude>
     <ClInclude Include="TextureMgr.h">
-      <Filter>6. Mgr\6-2. TextureMgr</Filter>
+      <Filter>6. ClientMgr\6-2. TextureMgr</Filter>
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
-      <Filter>6. Mgr\6-3. SceneMgr</Filter>
+      <Filter>6. ClientMgr\6-3. SceneMgr</Filter>
     </ClInclude>
     <ClInclude Include="ObjMgr.h">
-      <Filter>6. Mgr\6-4. ObjMgr</Filter>
+      <Filter>6. ClientMgr\6-4. ObjMgr</Filter>
     </ClInclude>
     <ClInclude Include="TimeMgr.h">
-      <Filter>6. Mgr\6-5. TimeMgr</Filter>
+      <Filter>6. ClientMgr\6-5. TimeMgr</Filter>
     </ClInclude>
     <ClInclude Include="KeyMgr.h">
-      <Filter>6. Mgr\6-7. KeyMgr\a.Key_You</Filter>
+      <Filter>6. ClientMgr\6-7. KeyMgr\a.Key_You</Filter>
     </ClInclude>
     <ClInclude Include="KeyMgr_Song.h">
-      <Filter>6. Mgr\6-7. KeyMgr\b.Key_Song</Filter>
+      <Filter>6. ClientMgr\6-7. KeyMgr\b.Key_Song</Filter>
     </ClInclude>
     <ClInclude Include="TileMgr.h">
-      <Filter>6. Mgr\6-8. TileMgr</Filter>
+      <Filter>6. ClientMgr\6-8. TileMgr</Filter>
     </ClInclude>
     <ClInclude Include="SoundMgr.h">
-      <Filter>6. Mgr\6-9. SoundMgr</Filter>
+      <Filter>6. ClientMgr\6-9. SoundMgr</Filter>
     </ClInclude>
     <ClInclude Include="ObjFactory.h">
       <Filter>4. Design\4-1. Factory\a. ObjFactory</Filter>

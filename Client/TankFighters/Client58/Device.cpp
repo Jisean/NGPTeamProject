@@ -65,8 +65,8 @@ HRESULT CDevice::InitDevice(void)
 	D3DXFONT_DESCW			tFontInfo;
 	ZeroMemory(&tFontInfo, sizeof(D3DXFONT_DESCW));
 
-	tFontInfo.Height = 70;
-	tFontInfo.Width  = 50;
+	tFontInfo.Height = 30;
+	tFontInfo.Width  = 20;
 	tFontInfo.Weight = FW_THIN; 
 	tFontInfo.CharSet = DEFAULT_CHARSET;
 	lstrcpy(tFontInfo.FaceName, L"comic sans ms");
