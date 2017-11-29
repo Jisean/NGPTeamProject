@@ -1,26 +1,25 @@
 #pragma once
+#include "stdafx.h"
+
+
 class GameObj
 {
+protected:
+	OBJDATA objData;
+
 public:
 	GameObj();
-	virtual ~GameObj();
+	~GameObj();
 
-	//virtual void Move(int iX, int iY, int client);
-	//virtual void DeleteObj(int client);
-};
-
-class Player : public GameObj
-{
-
-
-};
-
-class Bullets :public GameObj
-{
-
-};
-
-class Tile : public GameObj
-{
+	void Move(int posX, int posY);
+	
+	void SetData(OBJDATA data)
+	{
+		objData = data;
+	}
+	OBJDATA GetData(void)
+	{
+		return objData;
+	}
 
 };

@@ -13,10 +13,43 @@ ServerMgr::~ServerMgr()
 
 void ServerMgr::GameStart()
 {
-	GameStatus = Game::start;
+	GameState = Game::start;
 }
 
 void ServerMgr::GameEnd()
 {
-	GameStatus = Game::end;
+	GameState = Game::end;
+}
+
+void ServerMgr::CreateObject(int ObjectType)
+{
+	if (ObjectType == OBJECT_TANK)
+	{
+		vPlayer.push_back(Player());
+	}
+	else if (ObjectType == OBJECT_BULLET)
+	{
+	}
+	else if (ObjectType == OBJECT_TILE)
+	{
+	}
+}
+
+void ServerMgr::DeleteObject(int ObjectType)
+{
+	if (ObjectType == OBJECT_TANK)
+	{
+	}
+	else if (ObjectType == OBJECT_BULLET)
+	{
+	}
+	else if (ObjectType == OBJECT_TILE)
+	{
+	}
+}
+
+
+void ServerMgr::SetKeyData(KEYDATA key)
+{
+	playerKey[key.clientNum] = key;
 }
