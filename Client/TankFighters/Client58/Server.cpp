@@ -4,16 +4,9 @@
 #include "Protocol.h"
 #include "resource.h"
 
-CServer::CServer()
-{
-	sock = NULL;
-}
+DWORD SERVERIP;
 
-CServer::~CServer()
-{
-}
-
-void CServer::err_quit(char * msg)
+void err_quit(char * msg)
 {
 	LPVOID lpMsgBuf;
 	FormatMessage(
@@ -26,7 +19,7 @@ void CServer::err_quit(char * msg)
 	exit(1);
 }
 
-void CServer::err_display(char * msg)
+void err_display(char * msg)
 {
 	LPVOID lpMsgBuf;
 	FormatMessage(
@@ -38,19 +31,18 @@ void CServer::err_display(char * msg)
 	LocalFree(lpMsgBuf);
 }
 
-void CServer::InitSocket(int retval)
+SOCKET InitSocket(int retval)
 {
 	WSADATA wsa;
 	WSAStartup(MAKEWORD(2, 2), &wsa);
 
-	sock = socket(AF_INET, SOCK_STREAM, 0);
+	SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock == INVALID_SOCKET) err_quit("socket()");
 
-
-	ConnectToServer(sock);
+	return sock;
 }
 
-void CServer::ConnectToServer(SOCKET sock)
+void ConnectToServer(SOCKET sock)
 {
 	DialogBox(g_hInst, MAKEINTRESOURCE(IDD_DIALOG1), g_hWnd, DlgProc);
 	// connect()
@@ -68,20 +60,65 @@ void CServer::ConnectToServer(SOCKET sock)
 	g_bConnected = true;
 }
 
-void CServer::CloseSocket()
+void CloseSocket(SOCKET sock)
 {
 	closesocket(sock);
 	WSACleanup();
 }
 
-DWORD CServer::RecvThread(LPVOID parameter)
+DWORD WINAPI RecvThread(LPVOID parameter)
 {
+	ORIGINPACKET sp = *(ORIGINPACKET*)parameter;
+	int retval;
+	int GameState;//게임 진행상태
+
+	while (1)
+	{
+		retval = recv(sp.sock, (char*)&GameState, sizeof(int), 0);
+		cout << "패킷 수신됨" << endl;
+	}
 	return 0;
 }
 
-DWORD CServer::SendThread(LPVOID parameter)
+DWORD WINAPI SendThread(LPVOID parameter)
 {
+	ORIGINPACKET sp = *(ORIGINPACKET*)parameter;
+
+	char buf[BUFSIZE + 1] = "TestPacket";
+
+	int retval = send(sp.sock, buf, strlen(buf), 0);
+	if (retval == SOCKET_ERROR)
+	{
+		err_quit("send()");
+		exit(1);
+	}
+	cout << "패킷송신됨" << endl;
+
+	//::Safe_Delete(parameter);
+
+	delete parameter;
+
 	return 0;
 }
 
-
+BOOL CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
+{
+	switch (iMessage)
+	{
+	case WM_INITDIALOG:
+		return TRUE;
+	case WM_COMMAND:
+		switch (wParam)
+		{
+		case IDOK:
+			SendMessage(GetDlgItem(hDlg, IDC_IPADDRESS1), IPM_GETADDRESS, 0, (LPARAM)&SERVERIP);
+			EndDialog(hDlg, 0);
+			return TRUE;
+		}
+		break;
+	case WM_CLOSE:
+		exit(1);
+		break;
+	}
+	return FALSE;
+}

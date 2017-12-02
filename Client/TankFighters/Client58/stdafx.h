@@ -54,10 +54,11 @@ using namespace std;
 #pragma comment (lib, "fmodex_vc.lib")
 
 #include "Server.h"
-extern CServer g_Socket;
 
 #include "resource.h"
 BOOL CALLBACK DlgProc(HWND, UINT, WPARAM, LPARAM);
+
+#include "Protocol.h"
 
 #pragma comment(lib,"msimg32.lib")
 #pragma comment(lib, "ws2_32.lib")

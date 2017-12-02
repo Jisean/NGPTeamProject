@@ -16,9 +16,9 @@ CMainGame::CMainGame(void)
 	CSoundMgr::GetInst()->Initialize();
 	CSoundMgr::GetInst()->LoadSoundFile();
 
-	//AllocConsole();
-	//freopen("CONOUT$", "wt", stdout);
-	//SetConsoleTitleA("Debug");
+	AllocConsole();
+	freopen("CONOUT$", "wt", stdout);
+	SetConsoleTitleA("Debug");
 }
 
 CMainGame::~CMainGame(void)
@@ -30,10 +30,10 @@ CMainGame::~CMainGame(void)
 HRESULT CMainGame::Initialize(void)
 {
 
-	//AllocConsole( );                 // Allocate console window
-	//freopen("CONOUT$", "a", stderr); // Redirect stderr to console
-	//freopen("CONOUT$", "a", stdout); // Redirect stdout also
-	//freopen("CONIN$", "r", stdin);
+	AllocConsole( );                 // Allocate console window
+	freopen("CONOUT$", "a", stderr); // Redirect stderr to console
+	freopen("CONOUT$", "a", stdout); // Redirect stdout also
+	freopen("CONIN$", "r", stdin);
 
 
 	if(FAILED(m_pDevice->InitDevice()))

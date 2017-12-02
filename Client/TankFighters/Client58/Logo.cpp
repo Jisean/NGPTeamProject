@@ -48,10 +48,7 @@ int CLogo::Progress(void)
 
 		m_bLoadingThreadClose = true;
 	}
-	if (m_bLoadingThreadClose == true && g_bConnected == false)
-	{
-		g_Socket.InitSocket(0);
-	}
+	
 
 	if(CKeyMgr::GetInst()->KeyDown(KEY_ENTER))
 	{

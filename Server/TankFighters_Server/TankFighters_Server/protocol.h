@@ -1,5 +1,6 @@
 #pragma once
 
+#define SERVERIP   "127.0.0.1"
 #define SERVERPORT 9000
 #define BUFSIZE    2048//1024
 #define	PURE = 0
@@ -30,7 +31,7 @@ typedef struct tagPACKET // 패킷
 	tagPACKET()
 	{
 		fX = 0.f;
-		fY = 0.f;
+		fY = 0.f; 
 		fCX = 0.f;
 		fCY = 0.f;
 		Hp = 0.f;
@@ -40,7 +41,7 @@ typedef struct tagPACKET // 패킷
 }PACKET;
 
 
-struct ORIGINPACKET
+typedef struct tagPacket
 {
 	PACKET	PlayerInfo1; // 플레이어1
 	PACKET	PlayerInfo2; // 플레이어2
@@ -48,11 +49,7 @@ struct ORIGINPACKET
 	UINT	BulletSize;
 	UINT	MonsterSize;
 
-	SOCKET sock;
-
-	ORIGINPACKET(SOCKET& s) { sock = s; }
-
-};
+}ORIGIN;
 
 typedef struct KeyInput
 {

@@ -12,7 +12,6 @@ HINSTANCE g_hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 HWND	g_hWnd;
-CServer g_Socket;
 bool	g_bConnected = false;
 
 
@@ -157,8 +156,32 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
 
+	static ORIGINPACKET *packet;
+	static HANDLE hEvent;
+	static SOCKET sock;
+
 	switch (message)
 	{
+	case WM_CREATE:
+		sock = InitSocket(0);
+		ConnectToServer(sock);
+
+		//hEvent = CreateEvent(NULL, FALSE, TRUE, NULL);
+		packet = new ORIGINPACKET(sock);
+		
+		CreateThread(NULL, 0, RecvThread, (LPVOID)packet, 0, NULL);
+		SetTimer(hWnd, 1, 50, NULL);//패킷 송신용 타이머 세팅
+		break;
+	case WM_TIMER:
+		switch (wParam)
+		{
+		case 1:
+		{
+			ORIGINPACKET *SPacket = new ORIGINPACKET(sock);
+			CreateThread(NULL, 0, SendThread, (LPVOID)SPacket, 0, NULL);
+		}
+		}
+		break;
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
@@ -172,17 +195,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
-
 	case WM_KEYDOWN:
 		switch(wParam)
 		{
 		case VK_ESCAPE:
+			CloseSocket(sock);
 			PostQuitMessage(0);
 			break;
 		}
 		break;
 	
 	case WM_DESTROY:
+		CloseSocket(sock);
 		PostQuitMessage(0);
 		break;
 	default:
@@ -192,25 +216,3 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 }
 
 
-BOOL CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
-{
-	switch (iMessage)
-	{
-	case WM_INITDIALOG:
-		return TRUE;
-	case WM_COMMAND:
-		switch (wParam)
-		{
-		case IDOK:
-			SendMessage(GetDlgItem(hDlg, IDC_IPADDRESS1), IPM_GETADDRESS, 0, (LPARAM)&g_Socket.SERVERIP);
-			EndDialog(hDlg, 0);
-			return TRUE;
-		}
-		break;
-	case WM_CLOSE:
-		g_Socket.CloseSocket();
-		exit(1);
-		break;
-	}
-	return FALSE;
-}
