@@ -50,10 +50,16 @@ int CLogo::Progress(void)
 	}
 	
 
-	if(CKeyMgr::GetInst()->KeyDown(KEY_ENTER))
+	/*if(CKeyMgr::GetInst()->KeyDown(KEY_ENTER))
 	{
 		CSceneMgr::GetInst()->SetScene(SC_STAGE);
 		return 0;
+	}*/
+
+	if (g_bGameReady == true)
+	{
+		CSceneMgr::GetInst()->SetScene(SC_STAGE);
+		g_bGameStarted = true;
 	}
 
 	return 0;

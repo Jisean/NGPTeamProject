@@ -74,7 +74,18 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 
 	while (1)
 	{
+		//게임 상태 수신 0: 대기, 1: 게임 진행
 		retval = recv(sp.sock, (char*)&GameState, sizeof(int), 0);
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			exit(1);
+		}
+
+		if (GameState == 1 && g_bGameStarted == false)
+		{
+			g_bGameReady = true;
+		}
+
 		cout << "패킷 수신됨" << endl;
 	}
 	return 0;
