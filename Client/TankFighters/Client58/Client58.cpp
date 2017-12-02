@@ -13,6 +13,8 @@ TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 HWND	g_hWnd;
 bool	g_bConnected = false;
+bool	g_bGameStarted = false;
+bool	g_bGameReady = false;
 
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
@@ -159,6 +161,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	static ORIGINPACKET *packet;
 	static HANDLE hEvent;
 	static SOCKET sock;
+	static bool key[5];
 
 	switch (message)
 	{
@@ -177,7 +180,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 		case 1:
 		{
-			ORIGINPACKET *SPacket = new ORIGINPACKET(sock);
+			SENDPACKET *SPacket = new SENDPACKET(sock,key);
 			CreateThread(NULL, 0, SendThread, (LPVOID)SPacket, 0, NULL);
 		}
 		}
@@ -198,12 +201,44 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_KEYDOWN:
 		switch(wParam)
 		{
-		case VK_ESCAPE:
+		case 'W':
+			key[0] = true;
+			break;
+		case 'S':
+			key[1] = true;
+			break;
+		case 'A':
+			key[2] = true;
+			break;
+		case 'D':
+			key[3] = true;
+			break;
+
+		case VK_ESCAPE://종료용
 			CloseSocket(sock);
 			PostQuitMessage(0);
 			break;
 		}
 		break;
+	case WM_KEYUP:
+	{
+		switch (wParam)
+		{
+		case 'W':
+			key[0] = false;
+			break;
+		case 'S':
+			key[1] = false;
+			break;
+		case 'A':
+			key[2] = false;
+			break;
+		case 'D':
+			key[3] = false;
+			break;
+		}
+	}
+	break;
 	
 	case WM_DESTROY:
 		CloseSocket(sock);

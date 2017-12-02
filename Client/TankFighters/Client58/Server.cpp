@@ -82,21 +82,24 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 
 DWORD WINAPI SendThread(LPVOID parameter)
 {
-	ORIGINPACKET sp = *(ORIGINPACKET*)parameter;
-
-	char buf[BUFSIZE + 1] = "TestPacket";
-
-	int retval = send(sp.sock, buf, strlen(buf), 0);
-	if (retval == SOCKET_ERROR)
+	if (g_bGameStarted == true)
 	{
-		err_quit("send()");
-		exit(1);
+		SENDPACKET sp = *(SENDPACKET*)parameter;
+
+		char buf[BUFSIZE + 1] = "TestPacket";
+
+		int retval = send(sp.sock, (char*)&sp.key, sizeof(sp.key), 0);
+		if (retval == SOCKET_ERROR)
+		{
+			err_quit("send()");
+			exit(1);
+		}
+		cout << "ÆÐÅ¶¼Û½ÅµÊ" << endl;
+
+		//::Safe_Delete(parameter);
+
+		delete parameter;
 	}
-	cout << "ÆÐÅ¶¼Û½ÅµÊ" << endl;
-
-	//::Safe_Delete(parameter);
-
-	delete parameter;
 
 	return 0;
 }

@@ -4,6 +4,9 @@ extern HINSTANCE	g_hInst;
 extern	HWND g_hWnd;
 extern float	g_fLoadingCnt;
 extern bool		g_bConnected;
+extern bool		g_bGameStarted;
+extern bool		g_bGameReady;
+extern int		g_iPlayerNum;
 
 const int WINCX = 1024;
 const int WINCY = 768;

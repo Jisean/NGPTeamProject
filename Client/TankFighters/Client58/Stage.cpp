@@ -32,6 +32,7 @@ HRESULT CStage::Initialize(void)
 	//pObj->m_PlayerID = PLAYER_2P;
 	//CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 
+	g_bGameStarted = true;
 	return S_OK;
 }
 

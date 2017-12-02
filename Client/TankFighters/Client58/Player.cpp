@@ -22,7 +22,7 @@ CPlayer::~CPlayer(void)
 HRESULT CPlayer::Initialize(void)
 {
 	m_vecOffset = D3DXVECTOR3(500.f, 400.f, 0.f);
-	m_tInfo.vSize = D3DXVECTOR3(18.f, 15.f, 0.f);
+	m_tInfo.vSize = D3DXVECTOR3(50.f, 50.f, 0.f);
 	m_RenderType = R_WORLDOBJ;
 	m_RoomType = 0;
 	m_bHasBodynHead = false;
@@ -45,7 +45,7 @@ int CPlayer::Progress(void)
 
 		CObjMgr::GetInst()->AddObj(OBJ_PLAYER_BODY, pObj);
 
-		pObj = CObjFactory<CPlayer_Head>::CreateObj(m_tInfo.vPos.x + 1, m_tInfo.vPos.y - 26.5f);
+		pObj = CObjFactory<CPlayer_Head>::CreateObj(m_tInfo.vPos.x, m_tInfo.vPos.y + 15.f);
 		dynamic_cast<CPlayer_Head*>(pObj)->m_pPlayer = this;
 
 		CObjMgr::GetInst()->AddObj(OBJ_PLAYER_HEAD, pObj);
@@ -64,7 +64,6 @@ int CPlayer::Progress(void)
 	//cout << "X : " << m_tInfo.vPos.x << endl;
 	//cout << "Y : " << m_tInfo.vPos.y << endl;
 
-	//cout << m_RoomType << endl;
 
 	/*cout << "HP:"<< fHp << endl;
 	cout << "MaxHP:" << iMaxHp << endl;*/

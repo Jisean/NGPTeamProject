@@ -66,3 +66,12 @@ typedef struct KeyInput
 	bool	bUShoot = false;
 	bool	bDShoot = false;
 }KEY;
+
+
+
+struct SENDPACKET {
+	SOCKET sock;
+	bool key[4];
+
+	SENDPACKET(SOCKET& s, bool k[4]) { sock = s; for (int i = 0; i < 4; ++i) key[i] = k[i]; }
+};

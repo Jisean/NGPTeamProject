@@ -20,11 +20,11 @@ CPlayer_Head::~CPlayer_Head(void)
 HRESULT CPlayer_Head::Initialize(void)
 {
 	m_wstrObjKey = L"Player";
-	m_wstrStateKey = L"Isaac_Head";
+	m_wstrStateKey = L"Head";
 	m_tFrame = FRAME(0.f, 1.f, 1.f);
-	m_dwState = HEAD_STAND;
-	m_dwState2 = BODY_STAND;
-	m_dwPrevState = HEAD_STAND;
+	m_dwState = HEAD_DOWN;
+	m_dwState2 = BODY_DOWN;
+	m_dwPrevState = HEAD_DOWN;
 	m_tStartFrame = m_tFrame;
 	m_fFramespeed = 2.f;
 	m_bTearFired = false;
@@ -35,16 +35,32 @@ HRESULT CPlayer_Head::Initialize(void)
 int CPlayer_Head::Progress(void)
 {
 	FrameMove();
-	//list<CObj*>::iterator iter = pObjList[OBJ_PLAYER].begin();
-	m_tInfo.vPos.x = m_pPlayer->GetInfo()->vPos.x + 1.f;
-	m_tInfo.vPos.y = m_pPlayer->GetInfo()->vPos.y - 26.5f;
+	if (m_dwState == HEAD_DOWN)
+	{
+		m_tInfo.vPos.x = m_pPlayer->GetInfo()->vPos.x;
+		m_tInfo.vPos.y = m_pPlayer->GetInfo()->vPos.y + 15.f;
+	}
+	else if(m_dwState == HEAD_UP)
+	{
+		m_tInfo.vPos.x = m_pPlayer->GetInfo()->vPos.x;
+		m_tInfo.vPos.y = m_pPlayer->GetInfo()->vPos.y - 15.f;
+	}
+	else if (m_dwState == HEAD_LEFT)
+	{
+		m_tInfo.vPos.x = m_pPlayer->GetInfo()->vPos.x - 15.f;
+		m_tInfo.vPos.y = m_pPlayer->GetInfo()->vPos.y;
+	}
+	else if (m_dwState == HEAD_RIGHT)
+	{
+		m_tInfo.vPos.x = m_pPlayer->GetInfo()->vPos.x + 15.f;
+		m_tInfo.vPos.y = m_pPlayer->GetInfo()->vPos.y;
+	}
 
 
 
 	m_fFramespeed = m_pPlayer->GetTear();
 
 	bInvincible = *(m_pPlayer->GetInvincible());
-	//bInvincible = *(*iter)->GetInvincible();
 	StateKeyInput();
 	CPlayer::WorldMatrix();
 	//cout << "head X : " << m_tInfo.vPos.x << endl;
@@ -72,48 +88,30 @@ void CPlayer_Head::Release(void)
 void CPlayer_Head::FrameMove(void)
 {
 	
-	if(m_dwState != m_dwPrevState)
-	{
+	
 		switch(m_dwState)
 		{
-		case HEAD_STAND:
-		/*	if(m_dwState2 == BODY_LEFT)
-			{
-				m_tFrame = FRAME(6.f, 0.f, 8.f);
-			}
-			if(m_dwState2 == BODY_RIGHT)
-			{
-				m_tFrame = FRAME(3.f, 0.f, 8.f);
-			}*/
-			m_tFrame = FRAME(0.f, 1.f, 1.f);
-			break;
 		case HEAD_DOWN:
-			m_tFrame = FRAME(1.f, 2.f + m_fFramespeed, 2.f);
+			m_tFrame = FRAME(0.f, 0.f, 4.f);
 			break;
 		case HEAD_UP:
-			m_tFrame = FRAME(5.f, 2.f + m_fFramespeed, 6.f);
+			m_tFrame = FRAME(2.f, 0.f, 4.f);
 			break;
 		case HEAD_LEFT:
-			m_tFrame = FRAME(7.f, 2.f + m_fFramespeed, 8.f);
+			m_tFrame = FRAME(3.f, 0.f, 4.f);
 			break;
 		case HEAD_RIGHT:
-			m_tFrame = FRAME(3.f, 2.f + m_fFramespeed, 4.f);
+			m_tFrame = FRAME(1.f, 0.f, 4.f);
 			break;
 		}
 		m_tStartFrame = m_tFrame;
-		m_dwPrevState = m_dwState;
-	}
+
 
 	
 	m_tFrame.fFrame += m_tFrame.fCount * GET_TIME;
 
 	if(m_tFrame.fFrame > m_tFrame.fMax)
 	{
-		if(m_dwState != HEAD_STAND)
-		{
-			m_dwState = HEAD_STAND;
-		}
-	
 		if(m_tStartFrame.fFrame == 0)
 		{
 			m_tFrame.fFrame = m_tStartFrame.fFrame;
@@ -134,7 +132,7 @@ void CPlayer_Head::StateKeyInput(void)
 	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_UP))
 	{
 		m_dwState = HEAD_UP;
-		if(m_tFrame.fFrame < 6.f && m_tFrame.fFrame > 5.f && m_bTearFired == false)
+		if(m_bTearFired == false)
 		{
 			if(rand()%2 == 0)
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire1.wav");
@@ -152,7 +150,7 @@ void CPlayer_Head::StateKeyInput(void)
 	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_DOWN))
 	{
 		m_dwState = HEAD_DOWN;
-		if(m_tFrame.fFrame < 2.f && m_tFrame.fFrame > 1.f && m_bTearFired == false)
+		if(m_bTearFired == false)
 		{
 			if(rand()%2 == 0)
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire1.wav");
@@ -169,7 +167,7 @@ void CPlayer_Head::StateKeyInput(void)
 	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_LEFT))
 	{
 		m_dwState = HEAD_LEFT;
-		if(m_tFrame.fFrame < 8.f && m_tFrame.fFrame > 7.f && m_bTearFired == false)
+		if(m_bTearFired == false)
 		{
 			if(rand()%2 == 0)
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire1.wav");
@@ -186,7 +184,7 @@ void CPlayer_Head::StateKeyInput(void)
 	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_RIGHT))
 	{
 		m_dwState = HEAD_RIGHT;
-		if(m_tFrame.fFrame < 4.f && m_tFrame.fFrame > 3.f && m_bTearFired == false)
+		if(m_bTearFired == false)
 		{
 			if(rand()%2 == 0)
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire1.wav");
