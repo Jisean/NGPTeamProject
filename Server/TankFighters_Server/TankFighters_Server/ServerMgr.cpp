@@ -53,3 +53,22 @@ void ServerMgr::SetKeyData(KEYDATA key)
 {
 	playerKey[key.clientNum] = key;
 }
+
+void ServerMgr::UpdatePlayer(KEYDATA key)
+{
+	int clientNum = key.clientNum;
+
+	vPlayer[clientNum].SetKeyData(key);
+	vPlayer[clientNum].Update();
+
+
+}
+
+void ServerMgr::Update()
+{
+	for (int i = 0; i < vPlayer.size(); ++i)
+		UpdatePlayer(playerKey[i]);
+
+
+
+}

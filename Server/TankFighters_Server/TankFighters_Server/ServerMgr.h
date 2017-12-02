@@ -27,10 +27,15 @@ public:
 	void CreateObject(int ObjectType);
 	void DeleteObject(int ObjectType);
 	void SetKeyData(KEYDATA key);
-
+	
+	void Update();
+	void UpdatePlayer(KEYDATA key);
 	//void Collision();
 
 	Game GetGameState() { return GameState; }
+	vector<Player> GetPlayers() { return vPlayer; }
+
+
 
 private:
 	Game GameState;  //게임 시작, 종료를 나타냄

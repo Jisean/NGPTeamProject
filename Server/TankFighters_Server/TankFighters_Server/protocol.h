@@ -1,4 +1,9 @@
 #pragma once
+<<<<<<< HEAD
+#include <stdlib.h>
+#include <stdio.h>
+=======
+>>>>>>> origin/master
 
 #define SERVERIP   "127.0.0.1"
 #define SERVERPORT 9000
@@ -36,7 +41,10 @@ typedef struct tagPACKET // ÆÐÅ¶
 		fCY = 0.f;
 		Hp = 0.f;
 		State = 0.f;
+<<<<<<< HEAD
+=======
 		OBJ_ID = OBJ_END;
+>>>>>>> origin/master
 	}
 }PACKET;
 
