@@ -3,7 +3,7 @@
 extern HINSTANCE	g_hInst;
 extern	HWND g_hWnd;
 extern float	g_fLoadingCnt;
-extern bool		g_bConnected;
+extern bool		g_bLoadingEnd;
 extern bool		g_bGameStarted;
 extern bool		g_bGameReady;
 extern int		g_iPlayerNum;

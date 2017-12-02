@@ -37,7 +37,7 @@ HRESULT CLogo::Initialize(void)
 
 int CLogo::Progress(void)
 {
-	rcLDBar.right = LONG(g_fLoadingCnt * 4.35);
+	rcLDBar.right = LONG(g_fLoadingCnt * 16.35);
 
 	if (m_bLoading == true && m_bLoadingThreadClose == false)
 	{
@@ -47,6 +47,7 @@ int CLogo::Progress(void)
 		DeleteCriticalSection(&m_Crt);
 
 		m_bLoadingThreadClose = true;
+		g_bLoadingEnd = true;
 	}
 	
 
@@ -56,7 +57,7 @@ int CLogo::Progress(void)
 		return 0;
 	}*/
 
-	if (g_bGameReady == true)
+	if (g_bGameReady == true && g_bLoadingEnd == true)
 	{
 		CSceneMgr::GetInst()->SetScene(SC_STAGE);
 		g_bGameStarted = true;

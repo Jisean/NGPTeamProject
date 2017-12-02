@@ -50,14 +50,13 @@ void ConnectToServer(SOCKET sock)
 	ZeroMemory(&serveraddr, sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;
 	serveraddr.sin_addr.s_addr = htonl(SERVERIP);
-	serveraddr.sin_port = htons(9000);
+	serveraddr.sin_port = htons(SERVERPORT);
 	int retval = connect(sock, (SOCKADDR *)&serveraddr, sizeof(serveraddr));
 	if (retval == SOCKET_ERROR) err_quit("connect()");
 
 	int anp = 1;
 	setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (char*)&anp, sizeof(int));
 
-	g_bConnected = true;
 }
 
 void CloseSocket(SOCKET sock)
@@ -81,7 +80,8 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 			exit(1);
 		}
 
-		if (GameState == 1 && g_bGameStarted == false)
+		cout <<"GameState:"<< GameState << endl;
+		if (GameState == 1 && g_bGameStarted == false && g_bLoadingEnd == true)
 		{
 			g_bGameReady = true;
 		}
@@ -102,7 +102,7 @@ DWORD WINAPI SendThread(LPVOID parameter)
 		int retval = send(sp.sock, (char*)&sp.key, sizeof(sp.key), 0);
 		if (retval == SOCKET_ERROR)
 		{
-			err_quit("send()");
+			err_display("send()");
 			exit(1);
 		}
 		cout << "ÆÐÅ¶¼Û½ÅµÊ" << endl;
