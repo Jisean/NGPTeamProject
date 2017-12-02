@@ -4,6 +4,7 @@
 
 ServerMgr::ServerMgr()
 {
+	GameState = 0;
 }
 
 
@@ -13,12 +14,12 @@ ServerMgr::~ServerMgr()
 
 void ServerMgr::GameStart()
 {
-	GameState = Game::start;
+	GameState = 1;
 }
 
 void ServerMgr::GameEnd()
 {
-	GameState = Game::end;
+	GameState = 2;
 }
 
 void ServerMgr::CreateObject(int ObjectType)

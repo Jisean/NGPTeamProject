@@ -8,12 +8,6 @@
 #define OBJECT_TANK 1
 #define OBJECT_TILE 2
 
-enum class Game
-{
-	start = 1,
-	end = 2,
-	wait = 0
-};
 
 
 class ServerMgr
@@ -33,13 +27,13 @@ public:
 	void UpdatePlayer(KEYDATA key);
 	//void Collision();
 
-	Game GetGameState() { return GameState; }
+	int GetGameState() { return GameState; }
 	vector<Player> GetPlayers() { return vPlayer; }
 
 
-
+	int GameState;  //대기, 게임 시작, 종료를 나타냄(0,1,2)
 private:
-	Game GameState;  //게임 시작, 종료를 나타냄
+	//int GameState;  //대기, 게임 시작, 종료를 나타냄(0,1,2)
 	
 	KEYDATA playerKey[2];
 
