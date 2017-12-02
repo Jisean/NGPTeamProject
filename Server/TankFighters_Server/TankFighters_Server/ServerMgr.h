@@ -10,8 +10,9 @@
 
 enum class Game
 {
-	start = 0,
-	end = 1
+	start = 1,
+	end = 2,
+	wait = 0
 };
 
 
