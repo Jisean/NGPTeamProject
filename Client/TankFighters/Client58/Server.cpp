@@ -85,6 +85,7 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		{
 			g_bGameReady = true;
 		}
+		////////////////
 
 		cout << "패킷 수신됨" << endl;
 	}
@@ -99,7 +100,7 @@ DWORD WINAPI SendThread(LPVOID parameter)
 
 		char buf[BUFSIZE + 1] = "TestPacket";
 
-		int retval = send(sp.sock, (char*)&sp.key, sizeof(sp.key), 0);
+		int retval = send(sp.sock, (char*)&sp.key, sizeof(sp.key), 0);//키입력 현황 송신
 		if (retval == SOCKET_ERROR)
 		{
 			err_display("send()");
