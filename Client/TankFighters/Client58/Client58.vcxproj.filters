@@ -115,6 +115,15 @@
     <Filter Include="6. ClientMgr\6-9. SoundMgr">
       <UniqueIdentifier>{86eb5f53-15a0-4ba5-838d-aaa3404f6eea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3. Obj\3-10. Enemy">
+      <UniqueIdentifier>{a6e4ad9f-3349-434f-be43-f2b5d58b9dc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-10. Enemy\a.Body">
+      <UniqueIdentifier>{e0a2b459-c192-4b01-a75c-69dbc649d301}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Obj\3-10. Enemy\b.Head">
+      <UniqueIdentifier>{cb0b2751-6fb1-44ab-86b9-cdb620117042}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client58.cpp">
@@ -203,6 +212,15 @@
     </ClCompile>
     <ClCompile Include="Server.cpp">
       <Filter>7.Server\a.Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Body.cpp">
+      <Filter>3. Obj\3-10. Enemy\a.Body</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Head.cpp">
+      <Filter>3. Obj\3-10. Enemy\b.Head</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>3. Obj\3-10. Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -304,6 +322,15 @@
     </ClInclude>
     <ClInclude Include="Server.h">
       <Filter>7.Server\a.Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Body.h">
+      <Filter>3. Obj\3-10. Enemy\a.Body</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Head.h">
+      <Filter>3. Obj\3-10. Enemy\b.Head</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>3. Obj\3-10. Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

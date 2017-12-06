@@ -100,6 +100,9 @@
     <ClCompile Include="Client58.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Body.cpp" />
+    <ClCompile Include="Enemy_Head.cpp" />
     <ClCompile Include="HpUI.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="KeyMgr_Song.cpp" />
@@ -134,6 +137,9 @@
     <ClInclude Include="Client58.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Body.h" />
+    <ClInclude Include="Enemy_Head.h" />
     <ClInclude Include="HpUI.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="KeyMgr_Song.h" />

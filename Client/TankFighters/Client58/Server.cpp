@@ -83,7 +83,6 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 			exit(1);
 		}
 
-		cout <<"GameState:"<< GameState << endl;
 		if (GameState == 1 && g_bGameStarted == false && g_bLoadingEnd == true)
 		{
 			g_bGameReady = true;
