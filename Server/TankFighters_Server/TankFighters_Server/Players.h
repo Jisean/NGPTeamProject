@@ -15,10 +15,19 @@ public:
 	{
 		PlayerMove = tPlayerMove;
 	}
+	
+	int GetClientNum()
+	{
+		return playerNum.clientNum;
+	}
+	//void SetPlayerNum()
+	////{
+	//
+	//}
 
 private:
 	KEYDATA PlayerMove;
+	KEYDATA playerNum;
 	int hp;
-
 };
 
