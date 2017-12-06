@@ -12,6 +12,10 @@ ServerMgr::~ServerMgr()
 {
 }
 
+void ServerMgr::GameWait()
+{
+	GameState = 0;
+}
 void ServerMgr::GameStart()
 {
 	GameState = 1;

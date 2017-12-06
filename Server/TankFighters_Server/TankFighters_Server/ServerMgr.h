@@ -18,7 +18,8 @@ public:
 
 	void GameStart();
 	void GameEnd();
-	
+	void GameWait();
+
 	void CreateObject(int ObjectType);
 	void DeleteObject(int ObjectType);
 	void SetKeyData(KEYDATA key);
