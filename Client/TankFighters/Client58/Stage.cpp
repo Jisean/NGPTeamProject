@@ -24,13 +24,26 @@ HRESULT CStage::Initialize(void)
 {
 	CObjMgr::GetInst()->AddObj(OBJ_UI,CObjFactory<CUI>::CreateObj());
 
-	CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(500.f, WINCY / 2.f, 0.f));
-	pObj->m_PlayerID = PLAYER_1P;
-	CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+	if (g_iPlayerNum = 1)
+	{
+		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(500.f, WINCY / 2.f, 0.f));
+		pObj->m_PlayerID = PLAYER_1P;
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 
-	//pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
-	//pObj->m_PlayerID = PLAYER_2P;
-	//CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+		//pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
+		//pObj->m_PlayerID = PLAYER_2P;
+		//CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+	}
+	else
+	{
+		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
+		pObj->m_PlayerID = PLAYER_2P;
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+
+		//pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(500.f, WINCY / 2.f, 0.f));
+		//pObj->m_PlayerID = PLAYER_1P;
+		//CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+	}
 
 	g_bGameStarted = true;
 	return S_OK;

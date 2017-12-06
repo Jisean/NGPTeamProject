@@ -15,6 +15,7 @@ HWND	g_hWnd;
 bool	g_bLoadingEnd = false;
 bool	g_bGameStarted = false;
 bool	g_bGameReady = false;
+int		g_iPlayerNum = 0;
 
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
