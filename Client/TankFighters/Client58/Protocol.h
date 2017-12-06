@@ -49,6 +49,7 @@ struct ORIGINPACKET
 	UINT	MonsterSize;
 
 	SOCKET sock;
+	HANDLE hEvent;
 
 	ORIGINPACKET(SOCKET& s) { sock = s; }
 

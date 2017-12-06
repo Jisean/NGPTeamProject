@@ -169,8 +169,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		sock = InitSocket(0);
 		ConnectToServer(sock);
 
-		//hEvent = CreateEvent(NULL, FALSE, TRUE, NULL);
+		hEvent = CreateEvent(NULL, FALSE, TRUE, NULL);
 		packet = new ORIGINPACKET(sock);
+		packet->hEvent = hEvent;
 		
 		CreateThread(NULL, 0, RecvThread, (LPVOID)packet, 0, NULL);
 		SetTimer(hWnd, 1, 50, NULL);//패킷 송신용 타이머 세팅

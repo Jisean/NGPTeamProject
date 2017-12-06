@@ -70,9 +70,12 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 	ORIGINPACKET sp = *(ORIGINPACKET*)parameter;
 	int retval;
 	int GameState;//게임 진행상태
+	HANDLE hEvent = sp.hEvent;
 
 	while (1)
 	{
+		WaitForSingleObject(hEvent, INFINITE);
+
 		//게임 상태 수신 0: 대기, 1: 게임 진행
 		retval = recv(sp.sock, (char*)&GameState, sizeof(int), 0);
 		if (retval == SOCKET_ERROR) {
@@ -88,6 +91,8 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		////////////////
 
 		cout << "패킷 수신됨" << endl;
+
+		SetEvent(hEvent);
 	}
 	return 0;
 }
