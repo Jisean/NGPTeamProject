@@ -89,6 +89,15 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		}
 		////////////////
 
+
+		//1,2플레이어 구분
+		retval = recv(sp.sock, (char*)&g_iPlayerNum, sizeof(int), 0);
+		if(retval == SOCKET_ERROR) {
+			err_display("send()");
+			exit(1);
+		}
+
+
 		cout << "패킷 수신됨" << endl;
 
 		SetEvent(hEvent);
