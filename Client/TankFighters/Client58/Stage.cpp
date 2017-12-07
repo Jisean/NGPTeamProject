@@ -25,7 +25,7 @@ HRESULT CStage::Initialize(void)
 {
 	CObjMgr::GetInst()->AddObj(OBJ_UI,CObjFactory<CUI>::CreateObj());
 
-	if (g_iPlayerNum = 1)
+	if (g_iPlayerNum == 1)
 	{
 		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(200.f, WINCY / 2.f, 0.f));
 		pObj->m_PlayerID = PLAYER_1P;
