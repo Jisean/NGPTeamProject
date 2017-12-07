@@ -19,7 +19,7 @@ CEnemy_Head::~CEnemy_Head(void)
 
 HRESULT CEnemy_Head::Initialize(void)
 {
-	m_wstrObjKey = L"Enemy";
+	m_wstrObjKey = L"Player";
 	m_wstrStateKey = L"Head";
 	m_tFrame = FRAME(0.f, 1.f, 1.f);
 	m_dwState = HEAD_DOWN;
@@ -61,7 +61,7 @@ int CEnemy_Head::Progress(void)
 	m_fFramespeed = m_pEnemy->GetTear();
 
 	bInvincible = *(m_pEnemy->GetInvincible());
-	StateKeyInput();
+	//StateKeyInput();
 	CEnemy::WorldMatrix();
 	//cout << "head X : " << m_tInfo.vPos.x << endl;
 	//cout << "head Y : " << m_tInfo.vPos.y << endl;

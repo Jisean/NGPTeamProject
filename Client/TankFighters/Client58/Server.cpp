@@ -98,6 +98,7 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		}
 
 
+
 		cout << "ÆÐÅ¶ ¼ö½ÅµÊ" << endl;
 
 		SetEvent(hEvent);

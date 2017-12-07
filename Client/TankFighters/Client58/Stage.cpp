@@ -5,6 +5,7 @@
 #include "TileMgr.h"
 #include "UI.h"
 #include "SoundMgr.h"
+#include "Enemy.h"
 
 CStage::CStage(void)
 {
@@ -26,13 +27,13 @@ HRESULT CStage::Initialize(void)
 
 	if (g_iPlayerNum = 1)
 	{
-		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(500.f, WINCY / 2.f, 0.f));
+		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(200.f, WINCY / 2.f, 0.f));
 		pObj->m_PlayerID = PLAYER_1P;
 		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 
-		//pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
-		//pObj->m_PlayerID = PLAYER_2P;
-		//CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+		pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
+		pObj->m_PlayerID = PLAYER_2P;
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 	}
 	else
 	{
@@ -40,9 +41,9 @@ HRESULT CStage::Initialize(void)
 		pObj->m_PlayerID = PLAYER_2P;
 		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 
-		//pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(500.f, WINCY / 2.f, 0.f));
-		//pObj->m_PlayerID = PLAYER_1P;
-		//CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+		pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(200.f, WINCY / 2.f, 0.f));
+		pObj->m_PlayerID = PLAYER_1P;
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 	}
 
 	g_bGameStarted = true;

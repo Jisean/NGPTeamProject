@@ -16,7 +16,7 @@ CEnemy_Body::~CEnemy_Body(void)
 
 HRESULT CEnemy_Body::Initialize(void)
 {
-	m_wstrObjKey = L"Enemy";
+	m_wstrObjKey = L"Player";
 	m_wstrStateKey = L"Body";
 	m_dwState = BODY_DOWN;
 	m_dwPrevState = BODY_DOWN;
@@ -31,7 +31,7 @@ int CEnemy_Body::Progress(void)
 	FrameMove();
 	m_tInfo.vPos = m_pEnemy->GetInfo()->vPos;
 	bInvincible = *(m_pEnemy->GetInvincible());
-	StateKeyInput();
+	//StateKeyInput();
 	CEnemy::WorldMatrix();
 	if (bInvincible == true)
 	{
