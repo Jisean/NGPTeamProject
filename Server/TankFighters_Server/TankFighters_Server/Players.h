@@ -3,6 +3,10 @@
 
 class Player : public GameObj
 {
+private:
+	KEYDATA PlayerMove;
+	int hp;
+
 public:
 	Player();
 	~Player();
@@ -16,18 +20,5 @@ public:
 		PlayerMove = tPlayerMove;
 	}
 	
-	int GetClientNum()
-	{
-		return playerNum.clientNum;
-	}
-	//void SetPlayerNum()
-	////{
-	//
-	//}
-
-private:
-	KEYDATA PlayerMove;
-	KEYDATA playerNum;
-	int hp;
 };
 

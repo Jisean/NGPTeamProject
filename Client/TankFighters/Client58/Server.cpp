@@ -72,6 +72,8 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 	int GameState;//게임 진행상태
 	HANDLE hEvent = sp.hEvent;
 
+	PACKET sPacket;
+
 	while (1)
 	{
 		WaitForSingleObject(hEvent, INFINITE);
@@ -79,7 +81,7 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		//게임 상태 수신 0: 대기, 1: 게임 진행
 		retval = recv(sp.sock, (char*)&GameState, sizeof(int), 0);
 		if (retval == SOCKET_ERROR) {
-			err_display("send()");
+			err_display("recv()");
 			exit(1);
 		}
 
@@ -93,10 +95,24 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		//1,2플레이어 구분
 		retval = recv(sp.sock, (char*)&g_iPlayerNum, sizeof(int), 0);
 		if(retval == SOCKET_ERROR) {
-			err_display("send()");
+			err_display("recv()");
 			exit(1);
 		}
 
+		int playerSize = 0;
+		retval = recv(sp.sock, (char*)&playerSize, sizeof(int), 0);
+
+		//PACKET
+		for (int i = 0; i < playerSize; ++i)
+		{
+			retval = recv(sp.sock, (char*)&sPacket, sizeof(PACKET), 0);
+			if (retval == SOCKET_ERROR) {
+				err_display("recv()");
+				exit(1);
+			}
+			else if (retval == 0)
+				break;
+		}
 
 
 		cout << "패킷 수신됨" << endl;

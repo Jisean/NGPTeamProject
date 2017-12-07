@@ -4,9 +4,8 @@
 
 Player::Player()
 {
-	//플레이어 정보를 초기화 해줘야함
-	objData.posX = 0;
-	objData.posY = 0;
+	ZeroMemory(&PlayerMove, sizeof(KEYDATA));
+
 }
 
 

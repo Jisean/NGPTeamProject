@@ -5,7 +5,7 @@
 class GameObj
 {
 protected:
-	OBJDATA objData;
+	PACKET Packet;
 
 public:
 	GameObj();
@@ -13,13 +13,13 @@ public:
 
 	void Move(int posX, int posY);
 	
-	void SetData(OBJDATA data)
+	void SetData(PACKET data)
 	{
-		objData = data;
+		Packet = data;
 	}
-	OBJDATA GetData(void)
+	PACKET GetData(void)
 	{
-		return objData;
+		return Packet;
 	}
 
 };
