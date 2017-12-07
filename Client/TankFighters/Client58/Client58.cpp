@@ -162,7 +162,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	static ORIGINPACKET *packet;
 	static HANDLE hEvent;
 	static SOCKET sock;
-	static bool key[5];
+	static bool key[8];
 
 	switch (message)
 	{
@@ -215,6 +215,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case 'D':
 			key[3] = true;
 			break;
+		case VK_UP:
+			key[3] = true;
+			break;
+		case VK_DOWN:
+			key[3] = true;
+			break;
+		case VK_LEFT:
+			key[3] = true;
+			break;
+		case VK_RIGHT:
+			key[3] = true;
+			break;
 
 		case VK_ESCAPE://Á¾·á¿ë
 			CloseSocket(sock);
@@ -237,6 +249,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 		case 'D':
 			key[3] = false;
+			break;
+		case VK_UP:
+			key[3] = true;
+			break;
+		case VK_DOWN:
+			key[3] = true;
+			break;
+		case VK_LEFT:
+			key[3] = true;
+			break;
+		case VK_RIGHT:
+			key[3] = true;
 			break;
 		}
 	}
