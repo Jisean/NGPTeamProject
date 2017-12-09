@@ -11,7 +11,7 @@ public:
 	GameObj();
 	~GameObj();
 
-	void Move(int posX, int posY);
+	void Move(int iX, int iY);
 	
 	void SetData(PACKET data)
 	{

@@ -13,12 +13,6 @@ Player::~Player()
 {
 }
 
-
-KEYDATA Player::GetKeyData()
-{
-	return PlayerMove;
-}
-
 void Player::Update()
 {
 	// 0:위 1:아래 2:좌 3:우 ,4 5 6 7: 공격

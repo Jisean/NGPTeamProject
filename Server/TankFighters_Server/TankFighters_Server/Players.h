@@ -14,7 +14,10 @@ public:
 	int GetHp() const { return hp; }
 	void Update();
 	
-	KEYDATA GetKeyData();
+	KEYDATA GetKeyData(void)
+	{
+		return PlayerMove;
+	}
 	void SetKeyData(KEYDATA tPlayerMove)
 	{
 		PlayerMove = tPlayerMove;
