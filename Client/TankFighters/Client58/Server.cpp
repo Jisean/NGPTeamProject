@@ -71,8 +71,8 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 	int retval;
 	int GameState;//게임 진행상태
 	HANDLE hEvent = sp.hEvent;
-
 	PACKET sPacket;
+
 
 	while (1)
 	{

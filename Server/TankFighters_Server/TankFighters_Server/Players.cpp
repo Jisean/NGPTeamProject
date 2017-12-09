@@ -5,7 +5,8 @@
 Player::Player()
 {
 	ZeroMemory(&PlayerMove, sizeof(KEYDATA));
-
+	Packet.fX = 500.0f;
+	Packet.fY = 400.0f;
 }
 
 
