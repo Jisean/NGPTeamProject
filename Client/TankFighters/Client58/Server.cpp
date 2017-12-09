@@ -3,6 +3,11 @@
 #include "Include.h"
 #include "Protocol.h"
 #include "resource.h"
+#include "Obj.h"
+#include "ObjMgr.h"
+#include "Enemy.h"
+#include "Enemy_Body.h"
+#include "Enemy_Head.h"
 
 DWORD SERVERIP;
 
@@ -103,6 +108,8 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 		retval = recv(sp.sock, (char*)&playerSize, sizeof(int), 0);
 
 		//PACKET
+
+		//위치갱신
 		for (int i = 0; i < playerSize; ++i)
 		{
 			retval = recv(sp.sock, (char*)&sPacket, sizeof(PACKET), 0);
@@ -112,6 +119,22 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 			}
 			else if (retval == 0)
 				break;
+
+
+			if (sPacket.OBJ_ID == 0)// 나 자신일시
+				break;
+			else if (sPacket.OBJ_ID == 1)//적 플레이어일시
+			{
+				if (g_bGameStarted == true)
+				{
+					CObj* Enemy = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY].begin());
+					//CObj* EnemyHead = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_HEAD].begin());
+					//CObj* EnemyBody = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_BODY].begin());
+
+					Enemy->SetPos(sPacket.fX, sPacket.fY);
+				}
+			}
+
 		}
 
 
