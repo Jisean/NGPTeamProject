@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-
+#include "Timer.h"
 
 class GameObj
 {
@@ -11,7 +11,7 @@ public:
 	GameObj();
 	~GameObj();
 
-	void Move(int iX, int iY);
+	void Move(int iX, int iY,Timer timer);
 	
 	void SetData(PACKET data)
 	{

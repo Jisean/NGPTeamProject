@@ -12,7 +12,7 @@ public:
 	~Player();
 
 	int GetHp() const { return hp; }
-	void Update();
+	void Update(Timer timer);
 	
 	KEYDATA GetKeyData(void)
 	{

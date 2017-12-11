@@ -24,8 +24,8 @@ public:
 	void DeleteObject(int ObjectType);
 	void SetKeyData(KEYDATA key);
 	
-	void Update();
-	void UpdatePlayer(KEYDATA key);
+	void Update(Timer timer);
+	void UpdatePlayer(KEYDATA key, Timer timer);
 	//void Collision();
 
 	int GetGameState() { return GameState; }

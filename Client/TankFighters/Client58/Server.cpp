@@ -131,6 +131,7 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 					//CObj* EnemyHead = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_HEAD].begin());
 					//CObj* EnemyBody = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_BODY].begin());
 
+					cout << "x:" << sPacket.fX << " / y:" << sPacket.fY << endl;
 					Enemy->SetPos(sPacket.fX, sPacket.fY);
 				}
 			}

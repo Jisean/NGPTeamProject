@@ -26,7 +26,7 @@ void Bullets::SetVector(int dx, int dy)
 	vY = dy;
 }
 
-void Bullets::Update()
+void Bullets::Update(Timer timer)
 {
-	Move(vX, vY);
+	Move(vX, vY, timer);
 }

@@ -18,7 +18,7 @@ public:
 	void SetClient(int c);
 	void SetVector(int dx, int dy);
 
-	void Update();
+	void Update(Timer time);
 	
 };
 

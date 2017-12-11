@@ -13,8 +13,8 @@ GameObj::~GameObj()
 {
 }
 
-void GameObj::Move(int iX, int iY)
+void GameObj::Move(int iX, int iY, Timer timer)
 {
-	Packet.fX += iX;
-	Packet.fY += iY;
+	Packet.fX += iX * timer.GetTime();
+	Packet.fY += iY * timer.GetTime();
 }

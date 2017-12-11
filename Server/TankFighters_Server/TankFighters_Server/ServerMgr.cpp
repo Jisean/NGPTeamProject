@@ -59,12 +59,12 @@ void ServerMgr::SetKeyData(KEYDATA key)
 	playerKey[key.clientNum] = key;
 }
 
-void ServerMgr::UpdatePlayer(KEYDATA keyData)
+void ServerMgr::UpdatePlayer(KEYDATA keyData, Timer timer)
 {
 	int clientNum = keyData.clientNum;
 
 	vPlayer[clientNum].SetKeyData(keyData);
-	vPlayer[clientNum].Update();
+	vPlayer[clientNum].Update(timer);
 
 	//ÃÑ¾Ë »ý¼º 
 	if (keyData.key[4] || keyData.key[5] || keyData.key[6] || keyData.key[7])
@@ -81,10 +81,10 @@ void ServerMgr::UpdatePlayer(KEYDATA keyData)
 	}
 }
 
-void ServerMgr::Update()
+void ServerMgr::Update(Timer timer)
 {
 	for (int i = 0; i < vPlayer.size(); ++i)
-		UpdatePlayer(playerKey[i]);
+		UpdatePlayer(playerKey[i], timer);
 
 
 
