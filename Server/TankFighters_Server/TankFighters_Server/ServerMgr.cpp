@@ -59,14 +59,26 @@ void ServerMgr::SetKeyData(KEYDATA key)
 	playerKey[key.clientNum] = key;
 }
 
-void ServerMgr::UpdatePlayer(KEYDATA key)
+void ServerMgr::UpdatePlayer(KEYDATA keyData)
 {
-	int clientNum = key.clientNum;
+	int clientNum = keyData.clientNum;
 
-	vPlayer[clientNum].SetKeyData(key);
+	vPlayer[clientNum].SetKeyData(keyData);
 	vPlayer[clientNum].Update();
 
+	//ÃÑ¾Ë »ý¼º 
+	if (keyData.key[4] || keyData.key[5] || keyData.key[6] || keyData.key[7])
+	{
+		Bullets tBullet;
+		tBullet.SetClient(keyData.clientNum);
+		tagPACKET tPacket;
+		tPacket.fX = vPlayer[clientNum].GetData().fX;
+		tPacket.fY = vPlayer[clientNum].GetData().fY;
+		tPacket.State = 1;
+		tBullet.SetData(tPacket);
 
+		lBullets.emplace_back(tBullet);
+	}
 }
 
 void ServerMgr::Update()
