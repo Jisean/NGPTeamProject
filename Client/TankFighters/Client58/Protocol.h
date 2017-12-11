@@ -35,7 +35,7 @@ typedef struct tagPACKET // ÆÐÅ¶
 		fCY = 0.f;
 		Hp = 0.f;
 		State = 0.f;
-		OBJ_ID = OBJ_END;
+		OBJ_ID = ID_END;
 	}
 }PACKET;
 

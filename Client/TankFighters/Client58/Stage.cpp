@@ -25,7 +25,7 @@ HRESULT CStage::Initialize(void)
 {
 	CObjMgr::GetInst()->AddObj(OBJ_UI,CObjFactory<CUI>::CreateObj());
 
-	if (g_iPlayerNum == 1)
+	if (g_iPlayerNum == 0) // 1p일때
 	{
 		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(200.f, WINCY / 2.f, 0.f));
 		pObj->m_PlayerID = PLAYER_1P;
@@ -35,7 +35,7 @@ HRESULT CStage::Initialize(void)
 		pObj->m_PlayerID = PLAYER_2P;
 		CObjMgr::GetInst()->AddObj(OBJ_ENEMY, pObj);
 	}
-	else
+	else if(g_iPlayerNum == 1) //2p일때
 	{
 		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
 		pObj->m_PlayerID = PLAYER_2P;
