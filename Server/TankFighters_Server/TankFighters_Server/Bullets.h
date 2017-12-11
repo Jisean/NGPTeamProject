@@ -1,18 +1,24 @@
 #pragma once
-class Bullets
+
+#include "Players.h"
+
+class Bullets : public Player
 {
 private:
 	int client;
 
-	float b_x;
-	float b_y;
+	float vX;
+	float vY;
 
 public:
 	Bullets();
 	~Bullets();
 
 	int GetClient();
-	//void Update();
+	void SetClient(int c);
+	void SetVector(int dx, int dy);
+
+	void Update();
 	
 };
 
