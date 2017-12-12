@@ -8,8 +8,10 @@
 #include "Enemy.h"
 #include "Enemy_Body.h"
 #include "Enemy_Head.h"
+#include "Player.h"
 
 DWORD SERVERIP;
+bool GameStarted = false;
 
 void err_quit(char * msg)
 {
@@ -98,19 +100,23 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 
 
 		//1,2플레이어 구분
-		retval = recv(sp.sock, (char*)&g_iPlayerNum, sizeof(int), 0);
-		if(retval == SOCKET_ERROR) {
-			err_display("recv()");
-			exit(1);
+		if (GameStarted == false)
+		{
+			retval = recv(sp.sock, (char*)&g_iPlayerNum, sizeof(int), 0);
+			if (retval == SOCKET_ERROR) {
+				err_display("recv()");
+				exit(1);
+			}
+			GameStarted = true;
 		}
-
+/*
 		int playerSize = 0;
-		retval = recv(sp.sock, (char*)&playerSize, sizeof(int), 0);
+		retval = recv(sp.sock, (char*)&playerSize, sizeof(int), 0);*/
 
 		//PACKET
 
 		//위치갱신
-		for (int i = 0; i < playerSize; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
 			retval = recv(sp.sock, (char*)&sPacket, sizeof(PACKET), 0);
 			if (retval == SOCKET_ERROR) {
@@ -121,9 +127,16 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 				break;
 
 
-			if (sPacket.OBJ_ID == 0)// 나 자신일시
-				break;
-			else if (sPacket.OBJ_ID == 1)//적 플레이어일시
+			if (sPacket.OBJ_ID == g_iPlayerNum)// 나 자신일시
+			{
+				if (g_bGameStarted == true)
+				{
+					CObj* Player = dynamic_cast<CPlayer*>(*CObjMgr::GetInst()->GetObjList()[OBJ_PLAYER].begin());
+					Player->SetPos(sPacket.fX, sPacket.fY);
+				}
+			}
+				
+			else if (sPacket.OBJ_ID != g_iPlayerNum)//적 플레이어일시
 			{
 				if (g_bGameStarted == true)
 				{

@@ -40,6 +40,20 @@ void ServerMgr::CreateObject(int ObjectType)
 	}
 }
 
+void ServerMgr::CreateObject(int ObjectType, int iNum)
+{
+	if (ObjectType == OBJECT_TANK)
+	{
+		vPlayer.push_back(Player(iNum));
+	}
+	else if (ObjectType == OBJECT_BULLET)
+	{
+	}
+	else if (ObjectType == OBJECT_TILE)
+	{
+	}
+}
+
 void ServerMgr::DeleteObject(int ObjectType)
 {
 	if (ObjectType == OBJECT_TANK)

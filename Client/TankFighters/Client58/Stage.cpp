@@ -39,11 +39,11 @@ HRESULT CStage::Initialize(void)
 	{
 		CObj* pObj = CObjFactory<CPlayer>::CreateObj(D3DXVECTOR3(700.f, WINCY / 2.f, 0.f));
 		pObj->m_PlayerID = PLAYER_2P;
-		CObjMgr::GetInst()->AddObj(OBJ_ENEMY, pObj);
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
 
 		pObj = CObjFactory<CEnemy>::CreateObj(D3DXVECTOR3(200.f, WINCY / 2.f, 0.f));
 		pObj->m_PlayerID = PLAYER_1P;
-		CObjMgr::GetInst()->AddObj(OBJ_PLAYER, pObj);
+		CObjMgr::GetInst()->AddObj(OBJ_ENEMY, pObj);
 	}
 
 	g_bGameStarted = true;

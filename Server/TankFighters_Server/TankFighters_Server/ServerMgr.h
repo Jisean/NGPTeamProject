@@ -21,6 +21,7 @@ public:
 	void GameWait();
 
 	void CreateObject(int ObjectType);
+	void CreateObject(int ObjectType, int iNum);
 	void DeleteObject(int ObjectType);
 	void SetKeyData(KEYDATA key);
 	

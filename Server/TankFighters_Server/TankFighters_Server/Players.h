@@ -9,6 +9,7 @@ private:
 
 public:
 	Player();
+	Player(int iNum);
 	~Player();
 
 	int GetHp() const { return hp; }

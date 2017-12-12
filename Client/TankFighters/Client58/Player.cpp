@@ -122,7 +122,7 @@ void CPlayer::WorldMatrix(void)
 
 void CPlayer::KeyInput(void)
 {
-	if(KeyMgr_Song::GetInstance()->GetKeyState('W'))
+	/*if(KeyMgr_Song::GetInstance()->GetKeyState('W'))
 	{
 		m_tInfo.vPos.y -= fSpeed * CTimeMgr::GetInst()->GetTime();
 	}
@@ -141,7 +141,7 @@ void CPlayer::KeyInput(void)
 	{
 		m_tInfo.vPos.x += fSpeed * CTimeMgr::GetInst()->GetTime();
 
-	}
+	}*/
 	/*if(CKeyMgr::GetInst()->KeyPressed(KEY_CTRL))
 	{
 		if(iBombs > 0)
