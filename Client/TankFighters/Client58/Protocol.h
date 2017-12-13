@@ -14,6 +14,13 @@ enum OBJ_ID
 	ID_END
 };
 
+typedef struct KEY
+{
+	int clientNum;
+	bool key[8];
+
+}KEYDATA;
+
 
 typedef struct tagPACKET // 패킷
 {
@@ -25,6 +32,8 @@ typedef struct tagPACKET // 패킷
 
 	int Hp;
 	int State;
+
+	KEYDATA KeyData;
 
 
 	tagPACKET()
@@ -55,18 +64,20 @@ struct ORIGINPACKET
 
 };
 
-typedef struct KeyInput
-{
-	bool	bUp = false;
-	bool	bDown = false;
-	bool	bLeft = false;
-	bool	bRight = false;
+//typedef struct KeyInput
+//{
+//	bool	bUp = false;
+//	bool	bDown = false;
+//	bool	bLeft = false;
+//	bool	bRight = false;
+//
+//	bool	bLShoot = false;
+//	bool	bRShoot = false;
+//	bool	bUShoot = false;
+//	bool	bDShoot = false;
+//}KEY;
 
-	bool	bLShoot = false;
-	bool	bRShoot = false;
-	bool	bUShoot = false;
-	bool	bDShoot = false;
-}KEY;
+
 
 
 

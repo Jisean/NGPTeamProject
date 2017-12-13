@@ -216,16 +216,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			key[3] = true;
 			break;
 		case VK_UP:
-			key[3] = true;
+			key[4] = true;
 			break;
 		case VK_DOWN:
-			key[3] = true;
+			key[5] = true;
 			break;
 		case VK_LEFT:
-			key[3] = true;
+			key[6] = true;
 			break;
 		case VK_RIGHT:
-			key[3] = true;
+			key[7] = true;
 			break;
 
 		case VK_ESCAPE://Á¾·á¿ë
@@ -251,16 +251,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			key[3] = false;
 			break;
 		case VK_UP:
-			key[3] = true;
+			key[4] = false;
 			break;
 		case VK_DOWN:
-			key[3] = true;
+			key[5] = false;
 			break;
 		case VK_LEFT:
-			key[3] = true;
+			key[6] = false;
 			break;
 		case VK_RIGHT:
-			key[3] = true;
+			key[7] = false;
 			break;
 		}
 	}

@@ -47,6 +47,7 @@ void Player::Update(Timer timer)
 {
 
 	cout << "Player " << PlayerMove.clientNum << " : " << "»ó:" << PlayerMove.key[0] << "ÇÏ:" << PlayerMove.key[1] << "ÁÂ:" << PlayerMove.key[2] << "¿ì:" << PlayerMove.key[3] << endl;
+	cout <<  "ÃÑ¾Ë »ó:" << PlayerMove.key[4] << "ÃÑ¾Ë ÇÏ:" << PlayerMove.key[5] << "ÃÑ¾Ë ÁÂ:" << PlayerMove.key[6] << "ÃÑ¾Ë ¿ì:" << PlayerMove.key[7] << endl;
 
 
 	// 0:»ó 1:ÇÏ 2:ÁÂ 3:¿ì ,4 5 6 7: °ø°Ý
@@ -58,6 +59,8 @@ void Player::Update(Timer timer)
 	//	|
 	//	|
 	//	V y
+
+	Packet.KeyData = PlayerMove;
 
 	if (PlayerMove.key[0] == true)
 		Move(0,-1,timer);

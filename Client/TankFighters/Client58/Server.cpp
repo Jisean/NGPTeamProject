@@ -141,13 +141,33 @@ DWORD WINAPI RecvThread(LPVOID parameter)
 				if (g_bGameStarted == true)
 				{
 					CObj* Enemy = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY].begin());
-					//CObj* EnemyHead = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_HEAD].begin());
-					//CObj* EnemyBody = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_BODY].begin());
+					CObj* EnemyHead = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_HEAD].begin());
+					CObj* EnemyBody = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_BODY].begin());
 
 					cout << "x:" << sPacket.fX << " / y:" << sPacket.fY << endl;
 					Enemy->SetPos(sPacket.fX, sPacket.fY);
+
+					if (sPacket.KeyData.key[0])
+						EnemyBody->SetState(BODY_UP);
+					else if (sPacket.KeyData.key[1])
+						EnemyBody->SetState(BODY_DOWN);
+					else if (sPacket.KeyData.key[2])
+						EnemyBody->SetState(BODY_LEFT);
+					else if (sPacket.KeyData.key[3])
+						EnemyBody->SetState(BODY_RIGHT);
+
+					if (sPacket.KeyData.key[4])
+						EnemyBody->SetState(HEAD_UP);
+					else if (sPacket.KeyData.key[5])
+						EnemyBody->SetState(HEAD_DOWN);
+					else if (sPacket.KeyData.key[6])
+						EnemyBody->SetState(HEAD_LEFT);
+					else if (sPacket.KeyData.key[7])
+						EnemyBody->SetState(HEAD_RIGHT);
 				}
 			}
+
+			
 
 		}
 
@@ -165,7 +185,10 @@ DWORD WINAPI SendThread(LPVOID parameter)
 	{
 		SENDPACKET sp = *(SENDPACKET*)parameter;
 
-		char buf[BUFSIZE + 1] = "TestPacket";
+		if (sp.key[5])
+		{
+			int i = 10;
+		}
 
 		int retval = send(sp.sock, (char*)&sp.key, sizeof(sp.key), 0);//키입력 현황 송신
 		if (retval == SOCKET_ERROR)
