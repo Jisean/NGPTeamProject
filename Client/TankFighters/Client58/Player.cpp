@@ -42,11 +42,14 @@ int CPlayer::Progress(void)
 	{
 		CObj* pObj = CObjFactory<CPlayer_Body>::CreateObj(m_tInfo.vPos);
 		dynamic_cast<CPlayer_Body*>(pObj)->m_pPlayer = this;
+		PlayerBody = dynamic_cast<CPlayer_Body*>(pObj);
 
 		CObjMgr::GetInst()->AddObj(OBJ_PLAYER_BODY, pObj);
 
 		pObj = CObjFactory<CPlayer_Head>::CreateObj(m_tInfo.vPos.x, m_tInfo.vPos.y + 15.f);
 		dynamic_cast<CPlayer_Head*>(pObj)->m_pPlayer = this;
+
+		PlayerHead = dynamic_cast<CPlayer_Head*>(pObj);
 
 		CObjMgr::GetInst()->AddObj(OBJ_PLAYER_HEAD, pObj);
 
@@ -59,7 +62,7 @@ int CPlayer::Progress(void)
 
 	WorldMatrix();
 	KeyInput();
-	Scroll();
+	//Scroll();
 
 	//cout << "X : " << m_tInfo.vPos.x << endl;
 	//cout << "Y : " << m_tInfo.vPos.y << endl;
@@ -70,7 +73,7 @@ int CPlayer::Progress(void)
 	if(bInvincible == true)
 	{
 		if(m_dwTime + 3000 < GetTickCount())
-		{
+		{	
 			bInvincible = false;
 			m_dwTime = GetTickCount();
 		}
@@ -142,32 +145,6 @@ void CPlayer::KeyInput(void)
 		m_tInfo.vPos.x += fSpeed * CTimeMgr::GetInst()->GetTime();
 
 	}*/
-	/*if(CKeyMgr::GetInst()->KeyPressed(KEY_CTRL))
-	{
-		if(iBombs > 0)
-		{
-			--iBombs;
-			CSoundMgr::GetInst()->PlaySkillSound(L"bombset.wav");
-			CObjMgr::GetInst()->AddObj(OBJ_BOMB, CObjFactory<CBomb>::CreateObj(m_tInfo.vPos));
-		}
-	}*/
-
-	/*if(CKeyMgr::GetInst()->KeyPressed(KEY_1))
-	{
-		fHp += 0.5f;
-	}
-	if(CKeyMgr::GetInst()->KeyPressed(KEY_2))
-	{
-		fHp -= 0.5f;
-	}
-	if(CKeyMgr::GetInst()->KeyPressed(KEY_3))
-	{
-		++iMaxHp;
-	}
-	if(CKeyMgr::GetInst()->KeyPressed(KEY_4))
-	{
-		--iMaxHp;
-	}*/
 
 }
 
@@ -221,8 +198,8 @@ void CPlayer::Scroll(void)
 void CPlayer::StatLoad(const wstring& wstrName)
 {
 	fAttack = 3.0f;
-	fHp = 3.0f;
-	iMaxHp = 3;
+	fHp = 40.0f;
+	iMaxHp = 40;
 	fTears = 3.0f;
 	fShotSpeed = 3.0f;
 	fSpeed = 1.f;

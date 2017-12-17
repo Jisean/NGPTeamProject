@@ -8,7 +8,6 @@ class CObj
 {
 protected:
 	static		D3DXVECTOR3		m_vScroll;
-	INFO			m_tInfo;
 	CDevice*		m_pDevice;
 	CTextureMgr*	m_pTexture;
 	float			m_fSpeed;
@@ -28,8 +27,7 @@ protected:
 
 	/////////////////////////////////////
 	float			fAttack;
-	float			fHp;
-	int				iMaxHp;
+	
 	float			fTears;
 	float			fShotSpeed;
 	float			fSpeed;
@@ -48,6 +46,9 @@ protected:
 
 public:
 	PLAYER_ID		m_PlayerID = PLAYER_END;
+	INFO			m_tInfo;
+	float			fHp;
+	int				iMaxHp;
 	
 
 public:

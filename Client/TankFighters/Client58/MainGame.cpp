@@ -5,6 +5,7 @@
 #include "ObjMgr.h"
 #include "KeyMgr.h"
 #include "SoundMgr.h"
+#include "Server.h"
 
 CMainGame::CMainGame(void)
 :m_pDevice(CDevice::GetInst())
@@ -23,12 +24,16 @@ CMainGame::CMainGame(void)
 
 CMainGame::~CMainGame(void)
 {
-	//FreeConsole();
+	FreeConsole();
 	Release();
 }
 
+
+
 HRESULT CMainGame::Initialize(void)
 {
+
+
 
 	AllocConsole( );                 // Allocate console window
 	freopen("CONOUT$", "a", stderr); // Redirect stderr to console
@@ -42,19 +47,30 @@ HRESULT CMainGame::Initialize(void)
 		return E_FAIL;
 	}
 	
-	m_pScene->SetScene(SC_LOGO);
 
 	CTimeMgr::GetInst()->InitTime();
+
+	
+	//소켓초기화
+	sock = InitSocket(sock);
+	CObjMgr::GetInst()->sock = sock;
+
+	//연결
+	ConnectToServer(sock, serveraddr);
+	
+	CSceneMgr::GetInst()->m_pMain = this;
+	m_pScene->SetScene(SC_LOGO);
 
 	return S_OK;
 }
 
 void CMainGame::Progress(void)
 {
+
 	CKeyMgr::GetInst()->KeyCheck();
 	CTimeMgr::GetInst()->SetTime();
 
-	m_pScene->Progress();
+	m_pScene->Progress(this);
 
 	D3DXMatrixTranslation(&m_matTrans, 600.f, 50.f, 0.f);
 

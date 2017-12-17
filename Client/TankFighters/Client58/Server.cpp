@@ -3,15 +3,8 @@
 #include "Include.h"
 #include "Protocol.h"
 #include "resource.h"
-#include "Obj.h"
-#include "ObjMgr.h"
-#include "Enemy.h"
-#include "Enemy_Body.h"
-#include "Enemy_Head.h"
-#include "Player.h"
 
 DWORD SERVERIP;
-bool GameStarted = false;
 
 void err_quit(char * msg)
 {
@@ -38,22 +31,23 @@ void err_display(char * msg)
 	LocalFree(lpMsgBuf);
 }
 
-SOCKET InitSocket(int retval)
+SOCKET InitSocket(SOCKET& sock)
 {
 	WSADATA wsa;
 	WSAStartup(MAKEWORD(2, 2), &wsa);
 
-	SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (sock == INVALID_SOCKET) err_quit("socket()");
+	sock = socket(AF_INET, SOCK_STREAM, 0);
+
+	if (sock == INVALID_SOCKET) 
+		err_quit("socket()");
 
 	return sock;
 }
 
-void ConnectToServer(SOCKET sock)
+void ConnectToServer(SOCKET& sock, SOCKADDR_IN& serveraddr)
 {
 	DialogBox(g_hInst, MAKEINTRESOURCE(IDD_DIALOG1), g_hWnd, DlgProc);
 	// connect()
-	SOCKADDR_IN serveraddr;
 	ZeroMemory(&serveraddr, sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;
 	serveraddr.sin_addr.s_addr = htonl(SERVERIP);
@@ -72,138 +66,50 @@ void CloseSocket(SOCKET sock)
 	WSACleanup();
 }
 
-DWORD WINAPI RecvThread(LPVOID parameter)
+DWORD WINAPI KeyProcess(LPVOID K)
 {
-	ORIGINPACKET sp = *(ORIGINPACKET*)parameter;
-	int retval;
-	int GameState;//게임 진행상태
-	HANDLE hEvent = sp.hEvent;
-	PACKET sPacket;
-
-
 	while (1)
 	{
-		WaitForSingleObject(hEvent, INFINITE);
+		KeyInput tKey = *(KeyInput*)K;
 
-		//게임 상태 수신 0: 대기, 1: 게임 진행
-		retval = recv(sp.sock, (char*)&GameState, sizeof(int), 0);
-		if (retval == SOCKET_ERROR) {
-			err_display("recv()");
-			exit(1);
-		}
+		if (GetAsyncKeyState(VK_RIGHT))
+			tKey.bRight = true;
 
-		if (GameState == 1 && g_bGameStarted == false && g_bLoadingEnd == true)
-		{
-			g_bGameReady = true;
-		}
-		////////////////
+		if (GetAsyncKeyState(VK_LEFT))
+			tKey.bLeft = true;
 
+		if (GetAsyncKeyState(VK_UP))
+			tKey.bUp = true;
 
-		//1,2플레이어 구분
-		if (GameStarted == false)
-		{
-			retval = recv(sp.sock, (char*)&g_iPlayerNum, sizeof(int), 0);
-			if (retval == SOCKET_ERROR) {
-				err_display("recv()");
-				exit(1);
-			}
-			GameStarted = true;
-		}
-/*
-		int playerSize = 0;
-		retval = recv(sp.sock, (char*)&playerSize, sizeof(int), 0);*/
+		if (GetAsyncKeyState(VK_DOWN))
+			tKey.bDown = true;
 
-		//PACKET
-
-		//위치갱신
-		for (int i = 0; i < 2; ++i)
-		{
-			retval = recv(sp.sock, (char*)&sPacket, sizeof(PACKET), 0);
-			if (retval == SOCKET_ERROR) {
-				err_display("recv()");
-				exit(1);
-			}
-			else if (retval == 0)
-				break;
-
-
-			if (sPacket.OBJ_ID == g_iPlayerNum)// 나 자신일시
-			{
-				if (g_bGameStarted == true)
-				{
-					CObj* Player = dynamic_cast<CPlayer*>(*CObjMgr::GetInst()->GetObjList()[OBJ_PLAYER].begin());
-					Player->SetPos(sPacket.fX, sPacket.fY);
-				}
-			}
-				
-			else if (sPacket.OBJ_ID != g_iPlayerNum)//적 플레이어일시
-			{
-				if (g_bGameStarted == true)
-				{
-					CObj* Enemy = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY].begin());
-					CObj* EnemyHead = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_HEAD].begin());
-					CObj* EnemyBody = dynamic_cast<CEnemy*>(*CObjMgr::GetInst()->GetObjList()[OBJ_ENEMY_BODY].begin());
-
-					cout << "x:" << sPacket.fX << " / y:" << sPacket.fY << endl;
-					Enemy->SetPos(sPacket.fX, sPacket.fY);
-
-					if (sPacket.KeyData.key[0])
-						EnemyBody->SetState(BODY_UP);
-					else if (sPacket.KeyData.key[1])
-						EnemyBody->SetState(BODY_DOWN);
-					else if (sPacket.KeyData.key[2])
-						EnemyBody->SetState(BODY_LEFT);
-					else if (sPacket.KeyData.key[3])
-						EnemyBody->SetState(BODY_RIGHT);
-
-					if (sPacket.KeyData.key[4])
-						EnemyBody->SetState(HEAD_UP);
-					else if (sPacket.KeyData.key[5])
-						EnemyBody->SetState(HEAD_DOWN);
-					else if (sPacket.KeyData.key[6])
-						EnemyBody->SetState(HEAD_LEFT);
-					else if (sPacket.KeyData.key[7])
-						EnemyBody->SetState(HEAD_RIGHT);
-				}
-			}
-
-			
-
-		}
-
-
-		cout << "패킷 수신됨" << endl;
-
-		SetEvent(hEvent);
 	}
 	return 0;
+
 }
 
-DWORD WINAPI SendThread(LPVOID parameter)
+int recvn(SOCKET s, char *buf, int len, int flags)
 {
-	if (g_bGameStarted == true)
+	int received;
+	char *ptr = buf;
+	int left = len;
+
+	while (left > 0)
 	{
-		SENDPACKET sp = *(SENDPACKET*)parameter;
+		received = recv(s, ptr, left, flags);
+		if (received == SOCKET_ERROR)
+			return SOCKET_ERROR;
 
-		if (sp.key[5])
-		{
-			int i = 10;
-		}
+		else if (received == 0)
+			break;
 
-		int retval = send(sp.sock, (char*)&sp.key, sizeof(sp.key), 0);//키입력 현황 송신
-		if (retval == SOCKET_ERROR)
-		{
-			err_display("send()");
-			exit(1);
-		}
-		cout << "패킷송신됨" << endl;
-
-		//::Safe_Delete(parameter);
-
-		delete parameter;
+		left -= received;
+		ptr += received;
 	}
 
-	return 0;
+
+	return (len - left);
 }
 
 BOOL CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
@@ -227,3 +133,4 @@ BOOL CALLBACK DlgProc(HWND hDlg, UINT iMessage, WPARAM wParam, LPARAM lParam)
 	}
 	return FALSE;
 }
+

@@ -1,6 +1,8 @@
 #pragma once
 #include "obj.h"
 
+class CPlayer_Body;
+class CPlayer_Head;
 class CPlayer :
 	public CObj
 {
@@ -9,6 +11,11 @@ protected:
 	bool			m_bBlinking;
 	D3DXVECTOR3		m_vecOffset;
 	map<wstring, UNITDATA*> m_mapStat;
+
+public:
+	CPlayer_Head* PlayerHead;
+	CPlayer_Body* PlayerBody;
+	int iPlayerNum;
 
 public:
 	CPlayer(void);

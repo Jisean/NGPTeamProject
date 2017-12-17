@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -15,18 +15,17 @@
     <ProjectGuid>{90780234-49E3-4D4A-BBDD-B2B1D9404ABB}</ProjectGuid>
     <RootNamespace>Client58</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -95,14 +94,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Client58.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="Effect.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy_Body.cpp" />
-    <ClCompile Include="Enemy_Head.cpp" />
     <ClCompile Include="HpUI.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="KeyMgr_Song.cpp" />
@@ -132,14 +129,12 @@
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AStar.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Client58.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="Effect.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy_Body.h" />
-    <ClInclude Include="Enemy_Head.h" />
     <ClInclude Include="HpUI.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="KeyMgr_Song.h" />

@@ -10,6 +10,7 @@ private:
 	RECT				rcLDBar;
 	bool				m_bLoading;
 	bool				m_bLoadingThreadClose;
+	int					m_iRetval = -9999;
 
 public:
 	CLogo(void);
@@ -22,7 +23,7 @@ public:
 
 public:
 	virtual HRESULT Initialize(void);
-	virtual int Progress(void);
+	virtual int Progress(CMainGame* pMain);
 	virtual void Render(void);
 	virtual void Release(void);
 

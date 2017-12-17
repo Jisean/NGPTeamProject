@@ -14,6 +14,14 @@ private:
 	TCHAR		m_szFPS[MIN_STR];
 	D3DXMATRIX	m_matTrans;
 
+
+public:
+	SOCKET		sock;
+	SOCKADDR_IN serveraddr;
+	HANDLE		hEvent;
+	KeyInput	m_Key;
+
+
 public:
 	HRESULT		Initialize(void);
 	void		Progress(void);

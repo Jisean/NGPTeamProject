@@ -16,7 +16,7 @@ public:
 
 public:
 	void FrameMove(void);
-	void StateKeyInput(void);
+	void StateKeyInput(KEY KeyValue);
 public:
 	CPlayer_Head(void);
 	~CPlayer_Head(void);

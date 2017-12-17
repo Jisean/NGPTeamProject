@@ -3,12 +3,14 @@
 #include "ObjMgr.h"
 #include "KeyMgr.h"
 #include "SceneMgr.h"
+#include "MainGame.h"
+#include "Server.h"
 
 
 CLogo::CLogo(void)
-:m_hThread(NULL),
-m_bLoading(false),
-m_bLoadingThreadClose(false)
+	:m_hThread(NULL),
+	m_bLoading(false),
+	m_bLoadingThreadClose(false)
 {
 	ZeroMemory(&m_Crt, sizeof(CRITICAL_SECTION));
 }
@@ -35,7 +37,7 @@ HRESULT CLogo::Initialize(void)
 	return S_OK;
 }
 
-int CLogo::Progress(void)
+int CLogo::Progress(CMainGame* pMain)
 {
 	rcLDBar.right = LONG(g_fLoadingCnt * 16.35);
 
@@ -49,14 +51,31 @@ int CLogo::Progress(void)
 		m_bLoadingThreadClose = true;
 		g_bLoadingEnd = true;
 	}
-	
 
-	/*if(CKeyMgr::GetInst()->KeyDown(KEY_ENTER))
+
+
+	PACKET Packet;
+
+	//플레이어 번호 매기는 수신 (1p,2p구분)
+	if (m_iRetval == -9999)
 	{
-		CSceneMgr::GetInst()->SetScene(SC_STAGE);
-		return 0;
-	}*/
+		m_iRetval = recvn(CSceneMgr::GetInst()->m_pMain->sock, (char*)&Packet, sizeof(PACKET), 0);
+		if (m_iRetval == SOCKET_ERROR)
+		{
+			err_display("recv()");
+			return 1;
+		}
 
+	}
+
+	if (Packet.OBJ_ID != ID_END)
+	{
+		CSceneMgr::GetInst()->SetID((OBJ_ID)Packet.OBJ_ID);
+		g_bGameReady = true;
+	}
+	////////////////
+
+	
 	if (g_bGameReady == true && g_bLoadingEnd == true)
 	{
 		CSceneMgr::GetInst()->SetScene(SC_STAGE);
@@ -70,7 +89,7 @@ void CLogo::Render(void)
 {
 	const TEXINFO* pTexture = CTextureMgr::GetInst()->GetTexture(L"LOGO");
 
-	if(pTexture == NULL)
+	if (pTexture == NULL)
 		return;
 
 	float	fX = pTexture->tImgInfo.Width / 2.f;
@@ -81,13 +100,13 @@ void CLogo::Render(void)
 	D3DXMatrixTranslation(&matTrans, WINCX / 2.f, WINCY / 2.f, 0.f);
 
 	CDevice::GetInst()->GetSprite()->SetTransform(&matTrans);
-	CDevice::GetInst()->GetSprite()->Draw(pTexture->pTexture, 
+	CDevice::GetInst()->GetSprite()->Draw(pTexture->pTexture,
 		NULL, &D3DXVECTOR3(fX, fY, 0.f), NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
 
 	D3DXMatrixTranslation(&matTrans, 50.f, 700.f, 0.f);
 	CDevice::GetInst()->GetSprite()->SetTransform(&matTrans);
 	CDevice::GetInst()->GetFont()->DrawTextW(CDevice::GetInst()->GetSprite(),
-		CTextureMgr::GetInst()->GetPathName().c_str(), 
+		CTextureMgr::GetInst()->GetPathName().c_str(),
 		CTextureMgr::GetInst()->GetPathName().size(),
 		NULL, 0,
 		D3DCOLOR_ARGB(255, 255, 255, 255));
@@ -102,11 +121,11 @@ void CLogo::Render(void)
 	matWorld = matScale * matTrans;
 
 	CDevice::GetInst()->GetSprite()->SetTransform(&matWorld);
-	CDevice::GetInst()->GetSprite()->Draw(pTexture->pTexture, 
-		NULL, &D3DXVECTOR3(pTexture->tImgInfo.Width / 2.f, 0.f, 0.f), NULL, D3DCOLOR_ARGB(255, 255, 255, 255));	
+	CDevice::GetInst()->GetSprite()->Draw(pTexture->pTexture,
+		NULL, &D3DXVECTOR3(pTexture->tImgInfo.Width / 2.f, 0.f, 0.f), NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
 
-	
-	CDevice::GetInst()->GetSprite()->Draw(pTexture2->pTexture, 
+
+	CDevice::GetInst()->GetSprite()->Draw(pTexture2->pTexture,
 		&rcLDBar, &D3DXVECTOR3(pTexture2->tImgInfo.Width / 2.f, 0.f, 0.f), NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
 
 
@@ -114,7 +133,7 @@ void CLogo::Render(void)
 
 void CLogo::Release(void)
 {
-	
+
 }
 
 unsigned int __stdcall CLogo::LoadThread(void* pArg)
@@ -123,21 +142,21 @@ unsigned int __stdcall CLogo::LoadThread(void* pArg)
 
 	EnterCriticalSection(&pLogo->GetCrt());
 
-	if(FAILED(CTextureMgr::GetInst()->InsertTexture(L"../Texture/Tile/Tile%d.png", 
+	if (FAILED(CTextureMgr::GetInst()->InsertTexture(L"../Texture/Tile/Tile%d.png",
 		L"TILE", TEX_MULTI, L"Tile", 27)))
 	{
 		ERR_MSG(L"Tile Texture Load Failed");
 		return E_FAIL;
 	}
 
-	if(FAILED(CTextureMgr::GetInst()->ReadImgPath(L"../Data/ImgPath.txt")))
+	if (FAILED(CTextureMgr::GetInst()->ReadImgPath(L"../Data/ImgPath.txt")))
 	{
 		ERR_MSG(L"Texture Load Failed");
 		return E_FAIL;
 	}
 
 
-	if(FAILED(CObjMgr::GetInst()->Initialize()))
+	if (FAILED(CObjMgr::GetInst()->Initialize()))
 	{
 		ERR_MSG(L"ObjMgr Init Failed");
 		return E_FAIL;

@@ -3,6 +3,7 @@
 #include "Include.h"
 #include "ObjMgr.h"
 
+class CMainGame;
 class CScene
 {
 protected:
@@ -10,7 +11,7 @@ protected:
 
 public:
 	virtual HRESULT	Initialize(void)PURE;
-	virtual int		Progress(void)PURE;
+	virtual int		Progress(CMainGame* pMain)PURE;
 	virtual void	Render(void)PURE;
 	virtual void	Release(void)PURE;
 

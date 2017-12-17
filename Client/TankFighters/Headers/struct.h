@@ -13,6 +13,8 @@ typedef struct tagInfo
 
 }INFO;
 
+
+
 typedef struct tagTexture
 {
 	LPDIRECT3DTEXTURE9		pTexture;	// 이미지 정보를 저장하기 위한 객체

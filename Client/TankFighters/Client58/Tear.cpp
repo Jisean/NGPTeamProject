@@ -25,36 +25,18 @@ HRESULT CTear::Initialize(void)
 
 int CTear::Progress(void)
 {
-	if(m_bIsDead == true)
+	/*if(m_bIsDead == true)
 	{
 		CSoundMgr::GetInst()->EffectSound1(L"tearhit.wav");
 		CObjMgr::GetInst()->AddObj(OBJ_EFFECT, CObjFactory<CEffect>::CreateObj(m_tInfo.vPos,EF_TEARSPLASH));
 		return 1;
-	}
-	//공격력에따라 눈물크기 변경되게할것
+	}*/
 
-
-	float fSpeed = 300.f;
-
-	if(m_fireway == WAY_UP)
+	if (iHp == 0)
 	{
-		m_tInfo.vPos.y -= fSpeed * CTimeMgr::GetInst()->GetTime();
+		//cout << "삭제" << endl;
+		return 1;
 	}
-	if(m_fireway == WAY_DOWN)
-	{
-		m_tInfo.vPos.y += fSpeed * CTimeMgr::GetInst()->GetTime();
-	}
-	if(m_fireway == WAY_LEFT)
-	{
-		m_tInfo.vPos.x -= fSpeed * CTimeMgr::GetInst()->GetTime();
-	}
-	if(m_fireway == WAY_RIGHT)
-	{
-		m_tInfo.vPos.x += fSpeed * CTimeMgr::GetInst()->GetTime();
-	}
-
-	//꺽이는거 콤바인써서 해결볼것
-
 	WorldMatrix();
 
 	return 0;
@@ -77,6 +59,25 @@ void CTear::Render(void)
 void CTear::Release(void)
 {
 }
+
+void CTear::SetPacket(PACKET* _pPacket)
+{
+	m_tInfo.vPos.x = _pPacket->fX;
+	m_tInfo.vPos.y = _pPacket->fY;
+	iHp = _pPacket->Hp;
+}
+
+CTear* CTear::Create(PACKET* _pPacket)
+{
+	CTear* pTear = new CTear;
+	pTear->Initialize();
+	pTear->m_tInfo.vPos.x = _pPacket->fX;
+	pTear->m_tInfo.vPos.y = _pPacket->fY;
+	pTear->iHp = _pPacket->Hp;
+
+	return pTear;
+}
+
 void CTear::WorldMatrix(void)
 {
 	D3DXMATRIX		matTrans;

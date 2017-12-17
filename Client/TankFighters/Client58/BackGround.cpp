@@ -14,7 +14,7 @@ CBackGround::~CBackGround(void)
 
 HRESULT CBackGround::Initialize(void)
 {
-	LoadTile(L"../Data/Basement.dat");
+	LoadTile(L"../Data/TankFightersMap.dat");
 
 	if(FAILED(m_pTexture->InsertTexture(L"../Texture/Map/Basement_All.png", L"BASEMENT",TEX_SINGLE)))
 	{
@@ -75,7 +75,7 @@ void CBackGround::Render(void)
 	{
 		for(int j = 0; j < m_iTileRenderX; ++j)
 		{
-			int iCullX = int(-m_vScroll.x) / TILECX;
+			int iCullX = int(-m_vScroll.x) / TILECX; 
 			int iCullY = int(-m_vScroll.y) / TILECY;
 
 			int INDEX = (i + iCullY) * TILEX + (j + iCullX);
@@ -85,6 +85,9 @@ void CBackGround::Render(void)
 
 			const TEXINFO* pTexture = m_pTexture->GetTexture(L"TILE", L"Tile", 
 				m_vecTile[INDEX]->byDrawID);
+
+			if (m_vecTile[INDEX]->byOption != 4)
+				continue;
 
 			D3DXMatrixTranslation(&matTrans, 
 				m_vecTile[INDEX]->vPos.x + m_vScroll.x, 
@@ -111,6 +114,7 @@ void CBackGround::Release(void)
 
 void CBackGround::LoadTile(const wstring& wstrPath)
 {
+	cout << (LPCSTR)wstrPath.c_str() << endl;
 	HANDLE	hFile = CreateFile(wstrPath.c_str(), GENERIC_READ, 
 		0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 

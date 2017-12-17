@@ -31,7 +31,6 @@ int CPlayer_Body::Progress(void)
 	FrameMove();
 	m_tInfo.vPos = m_pPlayer->GetInfo()->vPos;
 	bInvincible = *(m_pPlayer->GetInvincible());
-	StateKeyInput();
 	CPlayer::WorldMatrix();
 	if(bInvincible == true)
 	{
@@ -88,24 +87,24 @@ void CPlayer_Body::FrameMove(void)
 	}
 
 }
-void CPlayer_Body::StateKeyInput(void)
+void CPlayer_Body::StateKeyInput(KEY& KeyValue)
 {
-	if(KeyMgr_Song::GetInstance()->GetKeyState('W'))
+	if (KeyValue.bUp)
 	{
 		m_dwState = BODY_UP;
 	}
 
-	else if(KeyMgr_Song::GetInstance()->GetKeyState('S'))
+	else if (KeyValue.bDown)
 	{
 		m_dwState = BODY_DOWN;
 	}
 
-	else if(KeyMgr_Song::GetInstance()->GetKeyState('A'))
+	else if(KeyValue.bLeft)
 	{
 		m_dwState = BODY_LEFT;
 	}
 
-	else if(KeyMgr_Song::GetInstance()->GetKeyState('D'))
+	else if(KeyValue.bRight)
 	{
 		m_dwState = BODY_RIGHT;
 	}

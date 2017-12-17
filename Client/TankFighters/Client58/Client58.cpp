@@ -18,6 +18,8 @@ bool	g_bGameReady = false;
 int		g_iPlayerNum = 0;
 
 
+
+
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
@@ -157,38 +159,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	int wmId, wmEvent;
-
-	static ORIGINPACKET *packet;
-	static HANDLE hEvent;
-	static SOCKET sock;
-	static bool key[8];
+		int wmId, wmEvent;
 
 	switch (message)
 	{
-	case WM_CREATE:
-		sock = InitSocket(0);
-		ConnectToServer(sock);
-
-		hEvent = CreateEvent(NULL, FALSE, TRUE, NULL);
-		packet = new ORIGINPACKET(sock);
-		packet->hEvent = hEvent;
-		
-		CreateThread(NULL, 0, RecvThread, (LPVOID)packet, 0, NULL);
-		SetTimer(hWnd, 1, 50, NULL);//패킷 송신용 타이머 세팅
-		break;
-	case WM_TIMER:
-		switch (wParam)
-		{
-		case 1:
-		{
-			SENDPACKET *SPacket = new SENDPACKET(sock,key);
-			CreateThread(NULL, 0, SendThread, (LPVOID)SPacket, 0, NULL);
-		}
-		}
-		break;
 	case WM_COMMAND:
-		wmId    = LOWORD(wParam);
+		wmId = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
 		// 메뉴의 선택 영역을 구문 분석합니다.
 		switch (wmId)
@@ -200,74 +176,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
-	case WM_KEYDOWN:
-		switch(wParam)
-		{
-		case 'W':
-			key[0] = true;
-			break;
-		case 'S':
-			key[1] = true;
-			break;
-		case 'A':
-			key[2] = true;
-			break;
-		case 'D':
-			key[3] = true;
-			break;
-		case VK_UP:
-			key[4] = true;
-			break;
-		case VK_DOWN:
-			key[5] = true;
-			break;
-		case VK_LEFT:
-			key[6] = true;
-			break;
-		case VK_RIGHT:
-			key[7] = true;
-			break;
 
-		case VK_ESCAPE://종료용
-			CloseSocket(sock);
+	case WM_KEYDOWN:
+		switch (wParam)
+		{
+		case VK_ESCAPE:
 			PostQuitMessage(0);
 			break;
 		}
 		break;
-	case WM_KEYUP:
-	{
-		switch (wParam)
-		{
-		case 'W':
-			key[0] = false;
-			break;
-		case 'S':
-			key[1] = false;
-			break;
-		case 'A':
-			key[2] = false;
-			break;
-		case 'D':
-			key[3] = false;
-			break;
-		case VK_UP:
-			key[4] = false;
-			break;
-		case VK_DOWN:
-			key[5] = false;
-			break;
-		case VK_LEFT:
-			key[6] = false;
-			break;
-		case VK_RIGHT:
-			key[7] = false;
-			break;
-		}
-	}
-	break;
-	
+
 	case WM_DESTROY:
-		CloseSocket(sock);
 		PostQuitMessage(0);
 		break;
 	default:

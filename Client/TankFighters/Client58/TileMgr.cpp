@@ -30,8 +30,8 @@ CTileMgr::~CTileMgr(void)
 
 void CTileMgr::Progress(void)
 {
-	PlayerTile();
-	TearTile();
+	//PlayerTile();
+	//TearTile();
 	//BulletTile();
 	//DoorTile();
 	//BombTile();

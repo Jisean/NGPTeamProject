@@ -42,12 +42,12 @@ int CEnemy::Progress(void)
 		CObj* pObj = CObjFactory<CEnemy_Body>::CreateObj(m_tInfo.vPos);
 		dynamic_cast<CEnemy_Body*>(pObj)->m_pEnemy = this;
 
-		CObjMgr::GetInst()->AddObj(OBJ_ENEMY_BODY, pObj);
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER_BODY, pObj);
 
 		pObj = CObjFactory<CEnemy_Head>::CreateObj(m_tInfo.vPos.x, m_tInfo.vPos.y + 15.f);
 		dynamic_cast<CEnemy_Head*>(pObj)->m_pEnemy = this;
 
-		CObjMgr::GetInst()->AddObj(OBJ_ENEMY_HEAD, pObj);
+		CObjMgr::GetInst()->AddObj(OBJ_PLAYER_BODY, pObj);
 
 
 		/*CObjMgr::GetInst()->AddObj(OBJ_Enemy_BODY, CObjFactory<CEnemy_Body>::CreateObj(m_tInfo.vPos));

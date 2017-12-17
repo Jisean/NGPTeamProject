@@ -14,6 +14,11 @@ private:
 	float pfy;
 
 public:
+	SOCKET		sock;
+	SOCKADDR_IN serveraddr;
+	HANDLE		hEvent;
+
+public:
 
 	static bool Compare(CObj* pDest, CObj* pSource);
 	void AddObj(OBJID _eID, CObj* pObj);

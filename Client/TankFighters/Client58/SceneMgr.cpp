@@ -2,6 +2,7 @@
 #include "SceneMgr.h"
 #include "Logo.h"
 #include "Stage.h"
+#include "MainGame.h"
 
 IMPLEMENT_SINGLETON(CSceneMgr)
 
@@ -36,19 +37,19 @@ void CSceneMgr::SetScene(SCENEID _eScene)
 		ERR_MSG(L"Scene Init Failed");
 		return;
 	}
-	if(FAILED(m_pScene->Progress()))
+	if(FAILED(m_pScene->Progress(m_pMain)))
 	{
 		ERR_MSG(L"Scene Progress Failed");
 		return;
 	}
 }
 
-void CSceneMgr::Progress(void)
+void CSceneMgr::Progress(CMainGame* pMain)
 {
 	int iResult = 0;
 
 	if(m_pScene)
-		iResult = m_pScene->Progress();
+		iResult = m_pScene->Progress(pMain);
 }
 
 void CSceneMgr::Render(void)

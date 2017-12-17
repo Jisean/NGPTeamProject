@@ -61,7 +61,6 @@ int CPlayer_Head::Progress(void)
 	m_fFramespeed = m_pPlayer->GetTear();
 
 	bInvincible = *(m_pPlayer->GetInvincible());
-	StateKeyInput();
 	CPlayer::WorldMatrix();
 	//cout << "head X : " << m_tInfo.vPos.x << endl;
 	//cout << "head Y : " << m_tInfo.vPos.y << endl;
@@ -126,10 +125,10 @@ void CPlayer_Head::FrameMove(void)
 
 }
 
-void CPlayer_Head::StateKeyInput(void)
+void CPlayer_Head::StateKeyInput(KEY KeyValue)
 {
 	srand((unsigned)time(NULL));
-	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_UP))
+	if(KeyValue.bUShoot)
 	{
 		m_dwState = HEAD_UP;
 		if(m_bTearFired == false)
@@ -140,14 +139,14 @@ void CPlayer_Head::StateKeyInput(void)
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire2.wav");
 
 			
-				CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_UP);
+				/*CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_UP);
 				pObj->m_PlayerID = m_pPlayer->m_PlayerID;
-				CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);
+				CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);*/
 			m_bTearFired = true;
 		}
 	}
 
-	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_DOWN))
+	if(KeyValue.bDShoot)
 	{
 		m_dwState = HEAD_DOWN;
 		if(m_bTearFired == false)
@@ -157,14 +156,14 @@ void CPlayer_Head::StateKeyInput(void)
 			else
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire2.wav");	
 				
-			CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_DOWN);
+			/*CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_DOWN);
 			pObj->m_PlayerID = m_pPlayer->m_PlayerID;
-			CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);
+			CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);*/
 			m_bTearFired = true;
 		}
 	}
 
-	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_LEFT))
+	if(KeyValue.bLShoot)
 	{
 		m_dwState = HEAD_LEFT;
 		if(m_bTearFired == false)
@@ -174,14 +173,14 @@ void CPlayer_Head::StateKeyInput(void)
 			else
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire2.wav");
 			
-				CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_LEFT);
+				/*CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_LEFT);
 				pObj->m_PlayerID = m_pPlayer->m_PlayerID;
-				CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);
+				CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);*/
 			m_bTearFired = true;
 		}
 	}
 
-	if(KeyMgr_Song::GetInstance()->GetKeyState(VK_RIGHT))
+	if(KeyValue.bRShoot)
 	{
 		m_dwState = HEAD_RIGHT;
 		if(m_bTearFired == false)
@@ -192,9 +191,9 @@ void CPlayer_Head::StateKeyInput(void)
 				CSoundMgr::GetInst()->PlaySkillSound(L"tearfire2.wav");
 			
 			
-				CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_RIGHT);
+				/*CObj* pObj = CObjFactory<CTear>::CreateObj(m_tInfo.vPos, WAY_RIGHT);
 				pObj->m_PlayerID = m_pPlayer->m_PlayerID;
-				CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);
+				CObjMgr::GetInst()->AddObj(OBJ_TEAR, pObj);*/
 			m_bTearFired = true;
 		}
 	}

@@ -16,4 +16,9 @@ public:
 	virtual int		Progress(void);
 	virtual void	Render(void);
 	virtual void	Release(void);
+
+	int iHp = 1;
+
+	void SetPacket(PACKET* _pPacket);
+	static CTear* Create(PACKET* _pPacket);
 };

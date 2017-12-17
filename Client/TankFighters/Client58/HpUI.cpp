@@ -2,6 +2,7 @@
 #include "HpUI.h"
 #include "Objmgr.h"
 #include "ObjFactory.h"
+#include "SceneMgr.h"
 
 CHpUI::CHpUI(void)
 {
@@ -58,13 +59,22 @@ void CHpUI::HPCheck()
 {
 
 	list<CObj*>::iterator iter = CObjMgr::GetInst()->GetObjList()[OBJ_PLAYER].begin();
+	for( iter; iter!= CObjMgr::GetInst()->GetObjList()[OBJ_PLAYER].end();++iter)
+	{ 
+		if ((*iter)->m_PlayerID == CSceneMgr::GetInst()->m_ID)
+		{
+			cout << (*iter)->fHp << endl;
+			break;
+		}
+	}
+
 	list<CObj*>::iterator Hpiter_end = CObjMgr::GetInst()->GetObjList()[OBJ_UI_HP].end();
 	list<CObj*>::iterator Hpiter_start = CObjMgr::GetInst()->GetObjList()[OBJ_UI_HP].begin();
 
 	--Hpiter_end;
 
-	float fHp = *(*iter)->GetPlayerHp();
-	int   iMaxHp =*(*iter)->GetPlayerMaxHP();
+	float fHp = (*iter)->fHp;
+	int   iMaxHp =(*iter)->iMaxHp;
 
 
 	if(iMaxHp - fHp == 0.f)
@@ -128,6 +138,16 @@ void CHpUI::HPCheck()
 					--Hpiter_end;
 				}
 				(*Hpiter_start)->SetState(HS_HALF);
+				break;
+			}
+			else if (fHp == 0)
+			{
+				for (int j = 0; j < iMaxHp - 1; ++j)
+				{
+					(*Hpiter_end)->SetState(HS_ZERO);
+					--Hpiter_end;
+				}
+				(*Hpiter_start)->SetState(HS_ZERO);
 				break;
 			}
 		}
